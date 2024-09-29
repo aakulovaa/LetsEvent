@@ -7,14 +7,136 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
+    <ImageView
+        android:id="@+id/user_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/user_photo"
+        app:srcCompat="@drawable/vector"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:id="@+id/user_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/user_logo"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/user_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="55dp"
+        android:text="@string/user_mail"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:id="@+id/user_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="95dp"
+        android:text="@string/user_profile"
+        android:textSize="12sp"
+        android:textColor="@color/grey"
+        />
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="120dp"
+        tools:ignore="UselessLeaf">
+
+        <TextView
+            android:id="@+id/subscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/count_subscription"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/subscriber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/count_subscriber"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/count_events_attended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/count_events_attended"
+        android:textColor="@color/black"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="140dp"
+        android:textSize="12sp" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/pastel_blue"
+        android:onClick="goToAttended"
+        android:radius="10dp"
+        android:text="@string/events_attended"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/exit"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/settings"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="9dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/exit"
+        android:textColor="@color/red"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:background="@color/aquamarine"
-        >
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -31,10 +153,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/aquamarine"
+            android:importantForAccessibility="no"
             android:onClick="goToSaved"
             android:src="@drawable/ico_saved"
-            android:textColor="@color/black"
-            android:importantForAccessibility="no"/>
+            android:textColor="@color/black" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -60,11 +182,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-            android:backgroundTint="@color/aquamarine"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ico_user"
+            android:backgroundTint="@color/white"
             android:importantForAccessibility="no"
-            android:src="@drawable/ico_user"
-            android:textColor="@color/black"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
     </LinearLayout>
+
+
 </RelativeLayout>

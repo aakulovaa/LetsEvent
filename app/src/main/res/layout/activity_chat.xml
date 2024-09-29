@@ -18,13 +18,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="180dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="188dp"
             android:backgroundTint="@color/aquamarine"
             android:fontFamily="monospace"
             android:text="@string/chat_label"
             android:textColor="@color/black"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
@@ -69,10 +71,10 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/aquamarine"
             android:importantForAccessibility="no"
-            android:src="@drawable/ico_chat"
-            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/ico_chat"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
