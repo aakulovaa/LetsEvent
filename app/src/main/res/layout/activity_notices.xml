@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,4 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".NoticesActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/upper_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/aquamarine"
+        tools:ignore="UselessParent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/aquamarine"
+            android:fontFamily="monospace"
+            android:onClick="goToBack"
+            android:text="@string/back_btn"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="140dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/aquamarine"
+            android:fontFamily="monospace"
+            android:text="@string/notices_label"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

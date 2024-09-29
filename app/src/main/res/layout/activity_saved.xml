@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,4 +7,84 @@
     android:layout_height="match_parent"
     tools:context=".SavedActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/upper_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/aquamarine"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="150dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/aquamarine"
+            android:fontFamily="monospace"
+            android:text="@string/saved_label"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@color/aquamarine"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:backgroundTint="@color/aquamarine"
+            android:importantForAccessibility="no"
+            android:onClick="goToNews"
+            android:src="@drawable/ico_news"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/aquamarine"
+            android:src="@drawable/ico_saved"
+            android:textColor="@color/black"
+            android:importantForAccessibility="no"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:backgroundTint="@color/aquamarine"
+            android:importantForAccessibility="no"
+            android:onClick="goToHome"
+            android:src="@drawable/ico_home_black"
+            android:textColor="@color/black" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/aquamarine"
+            android:importantForAccessibility="no"
+            android:onClick="goToChat"
+            android:src="@drawable/ico_chat"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:backgroundTint="@color/aquamarine"
+            android:importantForAccessibility="no"
+            android:onClick="goToProfile"
+            android:src="@drawable/ico_user"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+</RelativeLayout>

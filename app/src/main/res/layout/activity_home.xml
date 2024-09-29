@@ -36,9 +36,10 @@
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/aquamarine"
         android:fontFamily="monospace"
+        android:importantForAccessibility="no"
         android:onClick="goToNotices"
         android:src="@drawable/ico_notices"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 </RelativeLayout>
 
@@ -55,10 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:backgroundTint="@color/aquamarine"
+            android:importantForAccessibility="no"
             android:onClick="goToNews"
             android:src="@drawable/ico_news"
             android:textColor="@color/black"
-            android:importantForAccessibility="no"/>
+            tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -74,10 +76,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:backgroundTint="@color/aquamarine"
-            android:src="@drawable/ico_home_black"
-            android:textColor="@color/black"
             android:importantForAccessibility="no"
-            />
+            android:src="@drawable/ico_home_black"
+            android:textColor="@color/black" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -86,17 +87,19 @@
             android:importantForAccessibility="no"
             android:onClick="goToChat"
             android:src="@drawable/ico_chat"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:backgroundTint="@color/aquamarine"
+            android:importantForAccessibility="no"
             android:onClick="goToProfile"
             android:src="@drawable/ico_user"
             android:textColor="@color/black"
-            android:importantForAccessibility="no" />
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 

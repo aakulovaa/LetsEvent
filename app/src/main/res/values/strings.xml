@@ -44,4 +44,9 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="change_city">Выбрать город</string>
+    <string name="back_btn"><![CDATA[<]]></string>
+    <string name="notices_label">Уведомления</string>
+    <string name="news_label">Новости</string>
+    <string name="saved_label">Избранное</string>
+    <string name="chat_label">Чаты</string>
 </resources>

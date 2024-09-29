@@ -39,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void goToChat(View v) {
         Intent intent = new Intent(this, ChatActivity.class);
         startActivity(intent);
