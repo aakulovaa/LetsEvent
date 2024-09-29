@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pastel_blue">#DEF7FE</color>
+    <color name="aquamarine">#B5F2EA</color>
 </resources>
