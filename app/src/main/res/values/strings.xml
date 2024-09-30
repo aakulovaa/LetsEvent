@@ -25,4 +25,7 @@
     <string name="events_attended">Посещенные мероприятия</string>
     <string name="go_to_attended"><![CDATA[>]]></string>
     <string name="attended_events">Посещенные мероприятия</string>
+    <string name="settings_label">Настройки</string>
+    <string name="change_theme">Темная тема</string>
+    <string name="change_akk">Бизнес аккаунт</string>
 </resources>

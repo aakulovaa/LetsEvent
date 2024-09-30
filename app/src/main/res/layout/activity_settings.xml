@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/ScreenBackground"
-    tools:context=".SavedActivity">
+    tools:context=".SettingsActivity">
 
     <RelativeLayout
         android:id="@+id/upper_bg"
@@ -15,27 +15,84 @@
         style="@style/LinearColor"
         tools:ignore="UselessParent">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            style="@style/ButtonForLabelColor"
+            android:fontFamily="monospace"
+            android:onClick="goToBack"
+            android:text="@string/back_btn"
+            android:textSize="16sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginHorizontal="150dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="165dp"
-            android:fontFamily="monospace"
-            android:text="@string/saved_label"
+            android:layout_marginEnd="147dp"
             style="@style/TextColor"
-            android:textSize="18sp" />
+            android:fontFamily="monospace"
+            android:text="@string/settings_label"
+            android:textSize="18sp"
+            tools:ignore="RelativeOverlap" />
 
     </RelativeLayout>
 
+
     <LinearLayout
+    android:id="@+id/change_theme"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="50dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextColor"
+        android:text="@string/change_theme"
+        />
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        />
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/change_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextColor"
+            android:text="@string/change_akk"
+            />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="133dp"
+            />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         style="@style/LinearColor"
+        android:orientation="horizontal"
         tools:ignore="UselessParent">
 
         <ImageButton
@@ -51,10 +108,10 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            style="@style/ButtonSelectedForLabelColor"
-            android:background="@drawable/ico_saved"
-            android:importantForAccessibility="no"/>
+            android:importantForAccessibility="no"
+            android:onClick="goToSaved"
+            android:src="@drawable/ico_saved"
+            style="@style/ButtonForLabelColor" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -78,11 +135,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-            android:importantForAccessibility="no"
-            android:onClick="goToProfile"
             android:src="@drawable/ico_user"
             style="@style/ButtonForLabelColor"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:onClick="goToProfile"
+            android:importantForAccessibility="no"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
     </LinearLayout>
+
 </RelativeLayout>

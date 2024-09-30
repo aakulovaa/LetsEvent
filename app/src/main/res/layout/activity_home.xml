@@ -5,14 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/ScreenBackground"
     tools:context=".HomeActivity">
 
 <RelativeLayout
     android:id="@+id/upper_bg"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/aquamarine">
+    style="@style/LinearColor">
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -25,13 +25,14 @@
         android:hint="@string/change_city"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         >
+
         <AutoCompleteTextView
             android:id="@+id/city_complete_txt"
             android:layout_width="200dp"
             android:layout_height="20dp"
-            android:padding="10dp"
             android:inputType="none"
-            tools:ignore="LabelFor" />
+            android:padding="10dp"
+            tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,11 +42,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="350dp"
         android:layout_marginTop="5dp"
-        android:backgroundTint="@color/aquamarine"
         android:fontFamily="monospace"
         android:importantForAccessibility="no"
         android:onClick="goToNotices"
         android:src="@drawable/ico_notices"
+        style="@style/ButtonForLabelColor"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 </RelativeLayout>
@@ -69,7 +70,9 @@
         android:layout_marginTop="68dp"
         android:layout_marginEnd="20dp"
         app:iconifiedByDefault="false"
-        app:queryHint="Поиск мероприятия" />
+        app:queryHint="Поиск мероприятия"
+        style="@style/TextColor"
+        />
 
     <CalendarView
         android:layout_width="wrap_content"
@@ -90,27 +93,25 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:background="@color/aquamarine"
+        style="@style/LinearColor"
         >
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-            android:backgroundTint="@color/aquamarine"
             android:importantForAccessibility="no"
             android:onClick="goToNews"
             android:src="@drawable/ico_news"
-            android:textColor="@color/black"
+            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/aquamarine"
             android:onClick="goToSaved"
             android:src="@drawable/ico_saved"
-            android:textColor="@color/black"
+            style="@style/ButtonForLabelColor"
             android:importantForAccessibility="no"/>
 
         <ImageButton
@@ -119,29 +120,27 @@
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/ico_home_black"
-            android:backgroundTint="@color/white"
+            style="@style/ButtonSelectedForLabelColor"
             android:importantForAccessibility="no"
             tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/aquamarine"
             android:importantForAccessibility="no"
             android:onClick="goToChat"
             android:src="@drawable/ico_chat"
-            android:textColor="@color/black"
+            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-            android:backgroundTint="@color/aquamarine"
             android:importantForAccessibility="no"
             android:onClick="goToProfile"
             android:src="@drawable/ico_user"
-            android:textColor="@color/black"
+            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>

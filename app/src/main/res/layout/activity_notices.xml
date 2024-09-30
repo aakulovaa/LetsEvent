@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/ScreenBackground"
     tools:context=".NoticesActivity">
 
 
@@ -12,8 +13,9 @@
         android:id="@+id/upper_bg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/aquamarine"
-        tools:ignore="UselessParent">
+        style="@style/LinearColor"
+        tools:ignore="UselessParent"
+        >
 
         <Button
             android:layout_width="wrap_content"
@@ -21,11 +23,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:backgroundTint="@color/aquamarine"
             android:fontFamily="monospace"
             android:onClick="goToBack"
             android:text="@string/back_btn"
-            android:textColor="@color/black"
+            style="@style/ButtonForLabelColor"
             android:textSize="16sp"
             tools:ignore="TouchTargetSizeCheck" />
 
@@ -36,10 +37,9 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="147dp"
-            android:backgroundTint="@color/aquamarine"
             android:fontFamily="monospace"
             android:text="@string/notices_label"
-            android:textColor="@color/black"
+            style="@style/TextColor"
             android:textSize="18sp" />
 
     </RelativeLayout>

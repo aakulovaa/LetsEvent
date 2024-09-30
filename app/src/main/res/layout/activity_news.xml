@@ -5,13 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/ScreenBackground"
     tools:context=".NewsActivity">
 
     <RelativeLayout
         android:id="@+id/upper_bg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/aquamarine"
+        style="@style/LinearColor"
         tools:ignore="UselessParent">
 
         <TextView
@@ -22,10 +23,9 @@
             android:layout_marginHorizontal="160dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="176dp"
-            android:backgroundTint="@color/aquamarine"
             android:fontFamily="monospace"
             android:text="@string/news_label"
-            android:textColor="@color/black"
+            style="@style/TextColor"
             android:textSize="18sp" />
 
     </RelativeLayout>
@@ -35,7 +35,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:background="@color/aquamarine"
+        style="@style/LinearColor"
         tools:ignore="UselessParent">
 
         <ImageButton
@@ -44,48 +44,44 @@
             android:layout_marginHorizontal="25dp"
             android:importantForAccessibility="no"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/white"
+            style="@style/ButtonSelectedForLabelColor"
             android:background="@drawable/ico_news"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/aquamarine"
             android:onClick="goToSaved"
             android:src="@drawable/ico_saved"
-            android:textColor="@color/black"
+            style="@style/ButtonForLabelColor"
             android:importantForAccessibility="no"/>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-            android:backgroundTint="@color/aquamarine"
             android:importantForAccessibility="no"
             android:onClick="goToHome"
             android:src="@drawable/ico_home_black"
-            android:textColor="@color/black" />
+            style="@style/ButtonForLabelColor" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/aquamarine"
             android:importantForAccessibility="no"
             android:onClick="goToChat"
             android:src="@drawable/ico_chat"
-            android:textColor="@color/black"
+            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-            android:backgroundTint="@color/aquamarine"
             android:importantForAccessibility="no"
             android:onClick="goToProfile"
             android:src="@drawable/ico_user"
-            android:textColor="@color/black"
+            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
