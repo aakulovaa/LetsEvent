@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".event_item">
-
+    >
 
     <ImageButton
         android:id="@+id/imageView2"
@@ -19,7 +18,7 @@
         android:layout_marginEnd="35dp"
         android:contentDescription="@string/gotoevent"
         app:srcCompat="@drawable/arrow_right"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -29,7 +28,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="42dp"
         android:layout_marginTop="21dp"
-        android:contentDescription="@string/event_image" />
+        android:contentDescription="@string/event_image"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/nameTextView"
@@ -54,6 +54,4 @@
         android:layout_toEndOf="@+id/imageView"
         android:textSize="14sp"
         tools:ignore="HardcodedText" />
-
-
 </RelativeLayout>

@@ -55,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void goToNews(View v) {
         Intent intent = new Intent(this, NewsActivity.class);
         startActivity(intent);
