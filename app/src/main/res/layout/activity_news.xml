@@ -39,14 +39,14 @@
         tools:ignore="UselessParent">
 
         <ImageButton
+            style="@style/ButtonSelectedForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-            android:importantForAccessibility="no"
             android:layout_marginTop="10dp"
-            style="@style/ButtonSelectedForLabelColor"
             android:background="@drawable/ico_news"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:importantForAccessibility="no"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"

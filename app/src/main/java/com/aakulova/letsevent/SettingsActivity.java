@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private SwitchCompat switchCompat;
     private boolean nightMode;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -32,7 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
             return insets;
         });
 
-        switchCompat = findViewById(R.id.switch_theme);
+        SwitchCompat switchCompat = findViewById(R.id.switch_theme);
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
         nightMode = sharedPreferences.getBoolean("nightMode", false);
 
@@ -40,20 +39,17 @@ public class SettingsActivity extends AppCompatActivity {
             switchCompat.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
-        switchCompat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (nightMode){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("nightMode", false);
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("nightMode", true);
-                }
-                editor.apply();
+        switchCompat.setOnClickListener(view -> {
+            if (nightMode){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                editor = sharedPreferences.edit();
+                editor.putBoolean("nightMode", false);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                editor = sharedPreferences.edit();
+                editor.putBoolean("nightMode", true);
             }
+            editor.apply();
         });//работает в светлой теме телефона
 
     }

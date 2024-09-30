@@ -3,10 +3,8 @@ package com.aakulova.letsevent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private String[] city = {"Москва", "Воронеж", "Орел"};
+    private final String[] city = {"Москва", "Воронеж", "Орел"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> arrayAdapter;
 
@@ -35,12 +33,9 @@ public class HomeActivity extends AppCompatActivity {
         autoCompleteTextView = findViewById(R.id.city_complete_txt);
         arrayAdapter = new ArrayAdapter<>(this, R.layout.list_item, city);
         autoCompleteTextView.setAdapter(arrayAdapter);
-        autoCompleteTextView.setOnItemClickListener((new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(getApplicationContext(), "Item: "+item, Toast.LENGTH_SHORT).show();
-            }
+        autoCompleteTextView.setOnItemClickListener(((adapterView, view, i, l) -> {
+            String item = adapterView.getItemAtPosition(i).toString();
+            Toast.makeText(getApplicationContext(), "Item: "+item, Toast.LENGTH_SHORT).show();
         }));
     }
 

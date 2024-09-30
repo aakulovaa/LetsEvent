@@ -49,12 +49,13 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
+            style="@style/ButtonSelectedForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            style="@style/ButtonSelectedForLabelColor"
             android:background="@drawable/ico_saved"
-            android:importantForAccessibility="no"/>
+            android:importantForAccessibility="no"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
         <ImageButton
             android:layout_width="wrap_content"
