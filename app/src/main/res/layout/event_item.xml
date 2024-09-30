@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".event_item">
+
+
+    <ImageButton
+        android:id="@+id/imageView2"
+        style="@style/ButtonWithoutBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="35dp"
+        android:contentDescription="@string/gotoevent"
+        app:srcCompat="@drawable/arrow_right"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="67dp"
+        android:layout_height="71dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="21dp"
+        android:contentDescription="@string/event_image" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        style="@style/TextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText,RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        style="@style/TextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameTextView"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="18dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:textSize="14sp"
+        tools:ignore="HardcodedText" />
+
+
+</RelativeLayout>

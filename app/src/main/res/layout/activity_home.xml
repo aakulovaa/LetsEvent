@@ -52,97 +52,111 @@
 </RelativeLayout>
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/upper_bg"
+        android:layout_above="@id/linearLayout2"
         >
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="20dp"
-        app:iconifiedByDefault="false"
-        app:queryHint="Поиск мероприятия"
-        style="@style/TextColor"
-        />
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchEvent"
+                style="@style/TextColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="68dp"
+                android:layout_marginEnd="20dp"
+                app:iconifiedByDefault="false"
+                app:queryHint="Поиск мероприятия" />
 
-    <CalendarView
-        android:layout_width="wrap_content"
-        android:layout_height="348dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="36dp" />
+            <CalendarView
+                android:id="@+id/calendar_events"
+                android:layout_width="wrap_content"
+                android:layout_height="348dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="36dp" />
+
+            <ListView
+                android:id="@+id/eventsListView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/linearLayout2"
+                android:layout_below="@+id/calendar_events"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="0dp"
+                tools:ignore="NestedScrolling,NotSibling" />
 
         </RelativeLayout>
 
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
+        style="@style/LinearColor"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        style="@style/LinearColor"
-        >
+        android:orientation="horizontal">
 
         <ImageButton
+            style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:importantForAccessibility="no"
             android:onClick="goToNews"
             android:src="@drawable/ico_news"
-            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
+            style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
             android:onClick="goToSaved"
-            android:src="@drawable/ico_saved"
-            style="@style/ButtonForLabelColor"
-            android:importantForAccessibility="no"/>
+            android:src="@drawable/ico_saved" />
 
         <ImageButton
+            style="@style/ButtonSelectedForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/ico_home_black"
-            style="@style/ButtonSelectedForLabelColor"
             android:importantForAccessibility="no"
             tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
         <ImageButton
+            style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:importantForAccessibility="no"
             android:onClick="goToChat"
             android:src="@drawable/ico_chat"
-            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
+            style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:importantForAccessibility="no"
             android:onClick="goToProfile"
             android:src="@drawable/ico_user"
-            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

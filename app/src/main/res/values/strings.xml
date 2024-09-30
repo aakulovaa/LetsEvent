@@ -16,7 +16,8 @@
     <string name="user_photo">user_photo</string>
     <string name="user_logo">user_logo</string>
     <string name="user_mail">user_mail@gmail.com</string>
-    <string name="user_profile">Личный кабинет</string>
+    <string name="user_profile">Личный аккаунт</string>
+    <string name="user_business_profile">Бизнес аккаунт</string>
     <string name="count_subscription">25 подписок</string>
     <string name="count_subscriber">25 подписчиков</string>
     <string name="count_events_attended">2 посещенных мероприятия</string>
@@ -28,4 +29,6 @@
     <string name="settings_label">Настройки</string>
     <string name="change_theme">Темная тема</string>
     <string name="change_akk">Бизнес аккаунт</string>
+    <string name="event_image">event_image</string>
+    <string name="gotoevent">goToEvent</string>
 </resources>

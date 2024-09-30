@@ -1,8 +1,10 @@
 package com.aakulova.letsevent;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SavedActivity extends AppCompatActivity {
 
+    private int[] eventImage = {R.drawable.le,R.drawable.le,R.drawable.le};
+    private int goToEvent = R.drawable.arrow_right;
+    private String[] eventName = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
+    private String[] eventDate = {"28 сентября 11:00", "28 сентября 11:00", "28 сентября 11:00"};
+
+    private ListView savedEventsView;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +32,11 @@ public class SavedActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        savedEventsView = findViewById(R.id.list_item);
+        CustomEventAdapter customEventAdapter = new CustomEventAdapter(getApplicationContext(),eventImage, eventName, eventDate, goToEvent);
+        savedEventsView.setAdapter(customEventAdapter);
     }
 
     public void goToNews(View v) {

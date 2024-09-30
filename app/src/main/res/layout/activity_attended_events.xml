@@ -6,7 +6,8 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AttendedEventsActivity">
+    tools:context=".AttendedEventsActivity"
+    tools:ignore="VisualLintBounds">
 
     <RelativeLayout
         android:id="@+id/upper_bg"
@@ -42,6 +43,13 @@
             tools:ignore="RelativeOverlap" />
 
     </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout"
+        android:layout_below="@+id/upper_bg"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -99,5 +107,6 @@
             tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
     </LinearLayout>
+
 
 </RelativeLayout>

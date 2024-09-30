@@ -30,7 +30,15 @@
 
     </RelativeLayout>
 
+    <ListView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/upper_bg"
+        android:layout_above="@+id/linearLayout"/>
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
@@ -86,4 +94,5 @@
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
+
 </RelativeLayout>

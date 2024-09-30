@@ -8,6 +8,7 @@
     <style name="Theme.LetsEvent" parent="Base.Theme.LetsEvent" />
 
     <style name="ScreenBackground"><item name="android:background">@color/white</item></style>
+    <style name="CardBackground"><item name="android:background">@color/pastel_blue</item></style>
     <style name="TextColor"><item name="android:textColor">@color/black</item></style>
     <style name="ButtonColor">
         <item name="android:backgroundTint">@color/pastel_blue</item>

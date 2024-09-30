@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private boolean nightMode;
+    private boolean nightMode, businessMode;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -31,15 +31,15 @@ public class SettingsActivity extends AppCompatActivity {
             return insets;
         });
 
-        SwitchCompat switchCompat = findViewById(R.id.switch_theme);
+        SwitchCompat switchCompatTheme = findViewById(R.id.switch_theme);
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
         nightMode = sharedPreferences.getBoolean("nightMode", false);
 
         if(nightMode){
-            switchCompat.setChecked(true);
+            switchCompatTheme.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
-        switchCompat.setOnClickListener(view -> {
+        switchCompatTheme.setOnClickListener(view -> {
             if (nightMode){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 editor = sharedPreferences.edit();
@@ -51,6 +51,13 @@ public class SettingsActivity extends AppCompatActivity {
             }
             editor.apply();
         });//работает в светлой теме телефона
+
+        SwitchCompat switchCompatAkk = findViewById(R.id.switch_profile);
+        businessMode = sharedPreferences.getBoolean("businessMode", false);
+
+        if(businessMode){
+            switchCompatAkk.setChecked(true);
+        }
 
     }
 
