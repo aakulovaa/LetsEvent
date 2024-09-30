@@ -3,6 +3,11 @@ package com.aakulova.letsevent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +16,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class HomeActivity extends AppCompatActivity {
+
+    private String[] city = {"Москва", "Воронеж", "Орел"};
+    AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +31,17 @@ public class HomeActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        autoCompleteTextView = findViewById(R.id.city_complete_txt);
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.list_item, city);
+        autoCompleteTextView.setAdapter(arrayAdapter);
+        autoCompleteTextView.setOnItemClickListener((new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(getApplicationContext(), "Item: "+item, Toast.LENGTH_SHORT).show();
+            }
+        }));
     }
 
     public void goToNotices(View v) {
