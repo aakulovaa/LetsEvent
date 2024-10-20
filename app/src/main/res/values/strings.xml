@@ -31,4 +31,19 @@
     <string name="change_akk">Бизнес аккаунт</string>
     <string name="event_image">event_image</string>
     <string name="gotoevent">goToEvent</string>
+    <string name="goToEvent">Пойду!</string>
+    <string name="countPeople">256 участников</string>
+    <string name="eventName">Название</string>
+    <string name="eventDate">Дата</string>
+    <string name="eventAddress">Адрес</string>
+    <string name="eventDescription">Описание</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="user_name">Имя</string>
+    <string name="email">Email</string>
+    <string name="save">Сохранить изменения</string>
+    <string name="edit_yser_pass">Изменить пароль</string>
+    <string name="current_user_pass">Текущий пароль</string>
+    <string name="new_user_pass">Новый пароль</string>
+    <string name="confirm_new_user_pass">Повторите новый пароль</string>
+    <string name="change_pass">Изменить пароль</string>
 </resources>

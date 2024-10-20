@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/ScreenBackground"
-    tools:context=".HomeActivity">
+    tools:context=".event.HomeActivity">
 
 <RelativeLayout
     android:id="@+id/upper_bg"
@@ -51,13 +51,14 @@
 
 </RelativeLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/upper_bg"
-        android:layout_above="@id/linearLayout2"
-        >
+<!--    <ScrollView-->
+<!--        android:id="@+id/scrollView2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@id/linearLayout2"-->
+<!--        android:layout_below="@+id/upper_bg"-->
+<!--        android:layout_marginTop="2dp"-->
+<!--        android:layout_marginBottom="-2dp">-->
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -75,30 +76,34 @@
                 app:iconifiedByDefault="false"
                 app:queryHint="Поиск мероприятия" />
 
-            <CalendarView
-                android:id="@+id/calendar_events"
-                android:layout_width="wrap_content"
-                android:layout_height="348dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="42dp"
-                android:layout_marginTop="150dp"
-                android:layout_marginEnd="36dp" />
+<!--            <CalendarView-->
+<!--                android:id="@+id/calendar_events"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="348dp"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginStart="42dp"-->
+<!--                android:layout_marginTop="150dp"-->
+<!--                android:layout_marginEnd="36dp" />-->
 
             <ListView
                 android:id="@+id/eventsListView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="450dp"
                 android:layout_above="@id/linearLayout2"
-                android:layout_below="@+id/calendar_events"
+                android:layout_below="@+id/searchEvent"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="0dp"
-                tools:ignore="NestedScrolling,NotSibling" />
+                android:layout_marginTop="20dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="10.0sp"
+                tools:ignore="NestedScrolling,NotSibling"
+                tools:listItem="@layout/event_item"
+                />
 
         </RelativeLayout>
 
-    </ScrollView>
+<!--    </ScrollView>-->
 
     <LinearLayout
         android:id="@+id/linearLayout2"

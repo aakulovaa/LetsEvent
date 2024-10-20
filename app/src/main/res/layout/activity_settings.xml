@@ -6,7 +6,7 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+    tools:context=".user.SettingsActivity">
 
     <RelativeLayout
         android:id="@+id/upper_bg"
@@ -72,18 +72,118 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp">
         <TextView
+            android:id="@+id/accountTypeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextColor"
             android:text="@string/change_akk"
             />
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch_profile"
+            android:id="@+id/switchToBusinessButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="133dp"
             />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_profile"
+        android:theme="@style/ButtonWithoutBack"
+        android:textColor="@color/black"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="150dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/editProfileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:theme="@style/ButtonWithoutBack"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="200dp">
+
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_name"
+            />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email" />
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#ccc"
+            android:scaleType="centerCrop"
+            android:padding="6dp" />
+
+        <Button
+            android:id="@+id/saveChangesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/ButtonColor"
+            android:text="@string/save" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/changePasswordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_yser_pass"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="450dp"
+        android:theme="@style/ButtonWithoutBack"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:id="@+id/changePasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="500dp"
+        >
+
+        <EditText
+            android:id="@+id/currentPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/current_user_pass"
+            />
+
+        <EditText
+            android:id="@+id/newPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/new_user_pass" />
+
+        <EditText
+            android:id="@+id/confirmPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_new_user_pass" />
+
+        <Button
+            android:id="@+id/saveNewPasswordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/ButtonColor"
+            android:text="@string/change_pass"
+            />
+    </LinearLayout>
+
 
 
 

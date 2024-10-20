@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     style="@style/ScreenBackground"
     android:onClick="goToSettings"
-    tools:context=".ProfileActivity">
+    tools:context=".user.ProfileActivity">
 
     <ImageView
         android:id="@+id/user_photo"
@@ -31,7 +31,7 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/user_mail"
+        android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
@@ -41,7 +41,7 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/user_profile"
+        android:id="@+id/accountTypeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -107,7 +107,7 @@
 
 
     <Button
-        android:id="@+id/settings"
+        android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/exit"

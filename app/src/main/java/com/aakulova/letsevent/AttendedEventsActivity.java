@@ -1,16 +1,14 @@
 package com.aakulova.letsevent;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.aakulova.letsevent.event.HomeActivity;
+import com.aakulova.letsevent.user.ChatActivity;
+import com.aakulova.letsevent.user.NewsActivity;
+import com.aakulova.letsevent.user.ProfileActivity;
 
 public class AttendedEventsActivity extends AppCompatActivity {
 
@@ -19,25 +17,25 @@ public class AttendedEventsActivity extends AppCompatActivity {
     private String[] eventName = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
     private String[] eventDate = {"28 сентября 11:00", "28 сентября 11:00", "28 сентября 11:00"};
 
-    private ListView attendedEventsView;
-
-    @SuppressLint("MissingInflatedId")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_attended_events);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-
-        attendedEventsView = findViewById(R.id.list_item);
-        CustomEventAdapter customEventAdapter = new CustomEventAdapter(getApplicationContext(),eventImage, eventName, eventDate, goToEvent);
-        attendedEventsView.setAdapter(customEventAdapter);
-    }
+//    private ListView attendedEventsView;
+//
+//    @SuppressLint("MissingInflatedId")
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        EdgeToEdge.enable(this);
+//        setContentView(R.layout.activity_attended_events);
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
+//
+//
+//        attendedEventsView = findViewById(R.id.list_item);
+//        CustomEventAdapter customEventAdapter = new CustomEventAdapter(getApplicationContext(),eventImage, eventName, eventDate, goToEvent);
+//        attendedEventsView.setAdapter(customEventAdapter);
+//    }
 
     public void goToBack(View v) {
         Intent intent = new Intent(this, ProfileActivity.class);

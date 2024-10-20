@@ -1,4 +1,4 @@
-package com.aakulova.letsevent;
+package com.aakulova.letsevent.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.aakulova.letsevent.R;
+import com.aakulova.letsevent.event.HomeActivity;
 
 public class NoticesActivity extends AppCompatActivity {
 

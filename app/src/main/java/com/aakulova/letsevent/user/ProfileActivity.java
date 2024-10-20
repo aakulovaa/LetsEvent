@@ -1,8 +1,10 @@
-package com.aakulova.letsevent;
+package com.aakulova.letsevent.user;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +12,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.aakulova.letsevent.AttendedEventsActivity;
+import com.aakulova.letsevent.R;
+import com.aakulova.letsevent.SavedActivity;
+import com.aakulova.letsevent.event.HomeActivity;
+
 public class ProfileActivity extends AppCompatActivity {
+
+    private User currentUser; // Текущий пользователь
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +32,22 @@ public class ProfileActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Получаем текущего пользователя (здесь это может быть загружено из базы данных)
+        currentUser = new User("1", "Ann","user@example.com","", "regular");
+
+        TextView emailTextView = findViewById(R.id.emailTextView);
+        TextView accountTypeTextView = findViewById(R.id.accountTypeTextView);
+        Button settingsButton = findViewById(R.id.settingsButton);
+
+        emailTextView.setText(currentUser.getEmail());
+        accountTypeTextView.setText("Account Type: " + currentUser.getAccountType());
+
+        settingsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     public void goToNews(View v) {
