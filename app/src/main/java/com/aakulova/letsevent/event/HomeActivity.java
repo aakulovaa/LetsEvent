@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,39 +27,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private final String[] city = {"Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Нижний Новгород",
-            "Казань", "Челябинск", "Омск", "Самара", "Ростов-на-Дону",
-            "Уфа", "Красноярск", "Воронеж", "Пермь", "Саратов",
-            "Тюмень", "Ижевск", "Барнаул", "Ульяновск", "Калуга",
-            "Сочи", "Тула", "Томск", "Ярославль", "Астрахань",
-            "Рязань", "Владивосток", "Магнитогорск", "Ставрополь", "Липецк",
-            "Брянск", "Иваново", "Мурманск", "Чебоксары", "Кемерово",
-            "Тверь", "Архангельск", "Сургут", "Набережные Челны", "Хабаровск",
-            "Симферополь", "Нижнекамск", "Новороссийск", "Кострома", "Петрозаводск",
-            "Сланцы", "Чита", "Ноябрьск", "Находка", "Благовещенск",
-            "Комсомольск-на-Амуре", "Рубцовск", "Рыбинск", "Кызыл", "Курган",
-            "Саранск", "Магадан", "Якутск", "Элиста", "Грозный",
-            "Махачкала", "Назрань", "Нальчик", "Черкесск", "Петропавловск-Камчатский",
-            "Улан-Удэ", "Сыктывкар", "Ханты-Мансийск", "Нижний Тагил", "Златоуст",
-            "Ангарск", "Арзамас", "Нижневартовск", "Каспийск", "Калининград",
-            "Саратов", "Таганрог", "Шадринск", "Усть-Илимск", "Новокузнецк",
-            "Смоленск", "Киров", "Балаково", "Миасс", "Серпухов",
-            "Подольск", "Люберцы", "Химки", "Черкесск", "Тверь",
-            "Раменское", "Астрахань", "Славгород", "Жуковский", "Клин",
-            "Дзержинск", "Кострома", "Северодвинск", "Электросталь", "Камышин",
-            "Тихвин", "Волжский", "Сочи", "Находка", "Мурманск",
-            "Кисловодск", "Сызрань", "Туапсе", "Калуга", "Томск",
-            "Глазов", "Чебоксары", "Елец", "Узловая", "Шахты",
-            "Старый Оскол", "Кумертау", "Агидель", "Тольятти", "Кунгур",
-            "Тверь", "Ноябрьск", "Нальчик", "Энгельс", "Ковров",
-            "Смоленск", "Кострома", "Гатчина", "Нижневартовск", "Благовещенск",
-            "Суровикино", "Пятигорск", "Таганрог", "Салават", "Сосновый Бор",
-            "Калуга", "Зеленоград", "Королёв", "Наро-Фоминск", "Лобня",
-            "Истра", "Серпухов", "Люберцы", "Мытищи", "Долгопрудный",
-            "Щёлково", "Электросталь", "Обнинск", "Дзержинск", "Пушкин",
-            "Кострома", "Зеленодольск", "Котлас", "Сыктывкар", "Калининград",
-            "Усть-Лабинск", "Владикавказ", "Славгород", "Усть-Кут", "Невинномысск",
-            "Майкоп", "Находка", "Стародуб", "Петушки", "Пробуждение"};
+    private final String[] city = {"Москва", "Воронеж", "Орел"};
 
     private final int[] eventImage = {R.drawable.le,R.drawable.le,R.drawable.le};
     private final int[] countPeople = {10, 253, 382};
@@ -71,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ListAdapter listAdapter;
     ArrayList<ListData> dataArrayList = new ArrayList<>();
+    private ArrayList<ListData> filteredDataArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,15 +63,50 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Item: "+item, Toast.LENGTH_SHORT).show();
         }));
 
+        SearchView searchView = findViewById(R.id.searchEvent);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
+            }
+        });
+
         /** список мероприятий*/
         for (int i = 0; i < eventName.length; i++) {
             ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], countPeople[i], eventImage[i]);
             dataArrayList.add(listData);
         }
+        filteredDataArrayList.addAll(dataArrayList); // Изначально показываем все элементы
 
-        listAdapter = new ListAdapter(HomeActivity.this, dataArrayList);
+        listAdapter = new ListAdapter(HomeActivity.this, filteredDataArrayList);
         eventsView = findViewById(R.id.eventsListView);
         eventsView.setAdapter(listAdapter);
+    }
+
+    /**
+     * Фильтрует список мероприятий по введенному тексту.
+     *
+     * @param query текст, по которому будет выполняться фильтрация.
+     */
+    private void filter(String query) {
+        filteredDataArrayList.clear();
+        if (query.isEmpty()) {
+            filteredDataArrayList.addAll(dataArrayList);
+        } else {
+            String filterPattern = query.toLowerCase().trim();
+            for (ListData item : dataArrayList) {
+                if (item.name.toLowerCase().contains(filterPattern)) {
+                    filteredDataArrayList.add(item);
+                }
+            }
+        }
+        listAdapter.notifyDataSetChanged(); // Обновляем адаптер
     }
 
     public void goToNotices(View v) {

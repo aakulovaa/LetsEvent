@@ -68,5 +68,4 @@ public class ListAdapter extends ArrayAdapter<ListData> {
 
         return convertView;
     }
-
 }
