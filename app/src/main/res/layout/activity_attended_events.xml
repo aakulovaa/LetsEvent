@@ -45,7 +45,7 @@
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/list_item"
+        android:id="@+id/attendedEventsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayout"

@@ -1,41 +1,38 @@
 package com.aakulova.letsevent;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aakulova.letsevent.event.HomeActivity;
+import com.aakulova.letsevent.event.ListAdapter;
+import com.aakulova.letsevent.event.ListData;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
+import com.aakulova.letsevent.event.EventActivity;
+
+import java.util.ArrayList;
 
 public class AttendedEventsActivity extends AppCompatActivity {
 
-    private int[] eventImage = {R.drawable.le,R.drawable.le,R.drawable.le};
-    private int goToEvent = R.drawable.arrow_right;
-    private String[] eventName = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
-    private String[] eventDate = {"28 сентября 11:00", "28 сентября 11:00", "28 сентября 11:00"};
+    private ListView attendedEventsView;
+    private ListAdapter listAdapter;
 
-//    private ListView attendedEventsView;
-//
-//    @SuppressLint("MissingInflatedId")
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        EdgeToEdge.enable(this);
-//        setContentView(R.layout.activity_attended_events);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
-//
-//
-//        attendedEventsView = findViewById(R.id.list_item);
-//        CustomEventAdapter customEventAdapter = new CustomEventAdapter(getApplicationContext(),eventImage, eventName, eventDate, goToEvent);
-//        attendedEventsView.setAdapter(customEventAdapter);
-//    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_attended_events);
+
+        attendedEventsView = findViewById(R.id.attendedEventsListView);
+        ArrayList<ListData> attendedEvents = EventActivity.getAttendedEvents();
+
+        listAdapter = new ListAdapter(this, attendedEvents);
+        attendedEventsView.setAdapter(listAdapter);
+    }
 
     public void goToBack(View v) {
         Intent intent = new Intent(this, ProfileActivity.class);

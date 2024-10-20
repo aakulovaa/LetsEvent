@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private final String[] city = {"Москва", "Воронеж", "Орел", "Ливны"};
+    private final String[] city = {"Москва", "Воронеж", "Орел"};
 
     private final int[] eventImage = {R.drawable.le,R.drawable.le,R.drawable.le};
     private final int[] countPeople = {10, 253, 382};

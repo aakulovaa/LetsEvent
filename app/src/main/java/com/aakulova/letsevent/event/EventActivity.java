@@ -3,9 +3,11 @@ package com.aakulova.letsevent.event;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aakulova.letsevent.AttendedEventsActivity;
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.SavedActivity;
 import com.aakulova.letsevent.user.ChatActivity;
@@ -13,9 +15,13 @@ import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
 import com.aakulova.letsevent.databinding.ActivityEventBinding;
 
+import java.util.ArrayList;
+
 public class EventActivity extends AppCompatActivity {
 
     ActivityEventBinding binding;
+    private static ArrayList<ListData> attendedEvents = new ArrayList<>();
+    private static ArrayList<ListData> savedEvents = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +45,58 @@ public class EventActivity extends AppCompatActivity {
             binding.countPeople.setText(String.valueOf(countPeople)); // Преобразование в строку
             binding.eventImage.setImageResource(image);
         }
+        binding.btnGoToTheEvent.setOnClickListener(v -> {
+            ListData attendedEvent = new ListData(
+                    binding.eventName.getText().toString(),
+                    binding.dateEvent.getText().toString(),
+                    binding.descriptionEvent.getText().toString(),
+                    binding.addressEvent.getText().toString(),
+                    Integer.parseInt(binding.countPeople.getText().toString()),
+                    R.drawable.le // или другой ресурс изображения
+            );
+
+            if (attendedEvents.contains(attendedEvent)) {
+                attendedEvents.remove(attendedEvent);
+                Toast.makeText(this, "Событие удалено из списка посещенных.", Toast.LENGTH_SHORT).show();
+            } else {
+                attendedEvents.add(attendedEvent);
+                Toast.makeText(this, "Событие добавлено в список посещенных.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.btnFoeSaving.setOnClickListener(v -> {
+            ListData savedEvent = new ListData(
+                    binding.eventName.getText().toString(),
+                    binding.dateEvent.getText().toString(),
+                    binding.descriptionEvent.getText().toString(),
+                    binding.addressEvent.getText().toString(),
+                    Integer.parseInt(binding.countPeople.getText().toString()),
+                    R.drawable.le
+            );
+
+            if (savedEvents.contains(savedEvent)) {
+                savedEvents.remove(savedEvent);
+                Toast.makeText(this, "Событие удалено из избранного.", Toast.LENGTH_SHORT).show();
+            } else {
+                savedEvents.add(savedEvent);
+                Toast.makeText(this, "Событие добавлено в избранное.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
+    public static ArrayList<ListData> getAttendedEvents() {
+        return attendedEvents;
+    }
+
+    public static ArrayList<ListData> getSavedEvents() {
+        return savedEvents;
+    }
+
+    public void goToBack(View v) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
 
     public void goToNews(View v) {
         Intent intent = new Intent(this, NewsActivity.class);

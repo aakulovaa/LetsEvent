@@ -8,6 +8,28 @@
     android:layout_height="match_parent"
     tools:context=".event.EventActivity">
 
+  <RelativeLayout
+      android:id="@+id/upper_bg"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      style="@style/LinearColor"
+      tools:ignore="UselessParent"
+      >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="monospace"
+        android:onClick="goToBack"
+        android:text="@string/back_btn"
+        style="@style/ButtonForLabelColor"
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
+
+  </RelativeLayout>
 
   <ImageView
       android:id="@+id/eventImage"
@@ -15,7 +37,7 @@
       android:layout_height="194dp"
       android:layout_alignParentTop="true"
       android:layout_alignParentEnd="true"
-      android:layout_marginTop="23dp"
+      android:layout_marginTop="65dp"
       android:layout_marginEnd="31dp"
       tools:srcCompat="@tools:sample/backgrounds/scenic"
       tools:ignore="ContentDescription" />
