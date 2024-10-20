@@ -86,6 +86,16 @@
 <!--                android:layout_marginStart="42dp"-->
 <!--                android:layout_marginTop="150dp"-->
 <!--                android:layout_marginEnd="36dp" />-->
+            <TextView
+                android:id="@+id/no_events_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/searchEvent"
+                android:text="@string/no_events_in_city"
+                style="TextColor"
+                android:visibility="gone"
+             />
 
             <ListView
                 android:id="@+id/eventsListView"

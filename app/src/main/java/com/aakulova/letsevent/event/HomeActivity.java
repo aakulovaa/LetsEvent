@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private final String[] city = {"Москва", "Воронеж", "Орел"};
+    private final String[] city = {"Москва", "Воронеж", "Орел", "Ливны"};
 
     private final int[] eventImage = {R.drawable.le,R.drawable.le,R.drawable.le};
     private final int[] countPeople = {10, 253, 382};
@@ -41,6 +42,9 @@ public class HomeActivity extends AppCompatActivity {
     ListAdapter listAdapter;
     ArrayList<ListData> dataArrayList = new ArrayList<>();
     private ArrayList<ListData> filteredDataArrayList = new ArrayList<>();
+
+    private TextView noEventsTextView; // TextView для сообщения об отсутствии мероприятий
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +62,10 @@ public class HomeActivity extends AppCompatActivity {
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.city_complete_txt);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_item, city);
         autoCompleteTextView.setAdapter(arrayAdapter);
-        autoCompleteTextView.setOnItemClickListener(((adapterView, view, i, l) -> {
-            String item = adapterView.getItemAtPosition(i).toString();
-            Toast.makeText(getApplicationContext(), "Item: "+item, Toast.LENGTH_SHORT).show();
-        }));
+        autoCompleteTextView.setOnItemClickListener((adapterView, view, i, l) -> {
+            String selectedCity = adapterView.getItemAtPosition(i).toString();
+            filterByCity(selectedCity); // Фильтрация по городу
+        });
 
         SearchView searchView = findViewById(R.id.searchEvent);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -87,6 +91,9 @@ public class HomeActivity extends AppCompatActivity {
         listAdapter = new ListAdapter(HomeActivity.this, filteredDataArrayList);
         eventsView = findViewById(R.id.eventsListView);
         eventsView.setAdapter(listAdapter);
+
+        noEventsTextView = findViewById(R.id.no_events_text); // Инициализация TextView
+        noEventsTextView.setVisibility(View.GONE); // Скрыть по умолчанию
     }
 
     /**
@@ -107,6 +114,35 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
         listAdapter.notifyDataSetChanged(); // Обновляем адаптер
+    }
+
+    /**
+     * Фильтрует список мероприятий по названию города.
+     *
+     * @param cityName название города, по которому будет выполняться фильтрация.
+     */
+    private void filterByCity(String cityName) {
+        filteredDataArrayList.clear();
+        for (ListData item : dataArrayList) {
+            if (item.address.equals(cityName)) {
+                filteredDataArrayList.add(item);
+            }
+        }
+        listAdapter.notifyDataSetChanged(); // Обновляем адаптер
+        checkForNoEvents(); // Проверяем наличие мероприятий
+    }
+
+    /**
+     * Проверяет наличие мероприятий и обновляет видимость текстового поля.
+     */
+    private void checkForNoEvents() {
+        if (filteredDataArrayList.isEmpty()) {
+            noEventsTextView.setVisibility(View.VISIBLE); // Показываем сообщение
+            eventsView.setVisibility(View.GONE); // Скрываем список мероприятий
+        } else {
+            noEventsTextView.setVisibility(View.GONE); // Скрываем сообщение
+            eventsView.setVisibility(View.VISIBLE); // Показываем список мероприятий
+        }
     }
 
     public void goToNotices(View v) {

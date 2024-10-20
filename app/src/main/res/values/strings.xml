@@ -46,4 +46,5 @@
     <string name="new_user_pass">Новый пароль</string>
     <string name="confirm_new_user_pass">Повторите новый пароль</string>
     <string name="change_pass">Изменить пароль</string>
+    <string name="no_events_in_city">Нет мероприятий в этом городе</string>
 </resources>
