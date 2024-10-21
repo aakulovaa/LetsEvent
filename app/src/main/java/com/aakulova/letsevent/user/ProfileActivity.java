@@ -32,6 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     Dialog dialog;
     Button logOut;
+    private TextView attandedTextView;
+    private static final int REQUEST_CODE = 1;// для идентификации запроса
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,9 @@ public class ProfileActivity extends AppCompatActivity {
             return insets;
         });
 
+        currentUser = UserSession.getInstance().getCurrentUser();
         // Получаем текущего пользователя (здесь это может быть загружено из базы данных)
-        currentUser = new User("1", "User","user@example.com","", "regular");
+        //currentUser = new User("1", "User","user@example.com","", "regular");
 
         TextView logoTextView = findViewById(R.id.user_logo);
         logoTextView.setText(currentUser.getUsername());
@@ -55,19 +58,18 @@ public class ProfileActivity extends AppCompatActivity {
 
         TextView accountTypeTextView = findViewById(R.id.accountTypeTextView);
         if(Objects.equals(currentUser.getAccountType(), "regular")){
-            accountTypeTextView.setText("Бизнес аккаунт");
-        }
-        else {
             accountTypeTextView.setText("Личный аккаунт");
         }
-//        Button settingsButton = findViewById(R.id.settingsButton);
-//
-//
-//        settingsButton.setOnClickListener(v -> {
-//            Intent intent = new Intent(ProfileActivity.this, SettingsActivity.class);
-//            startActivity(intent);
-//        });
+        else {
+            accountTypeTextView.setText("Бизнес аккаунт");
+        }
 
+        TextView followersTextView = findViewById(R.id.subscriber);
+        followersTextView.setText(currentUser.getFollowersCount() + " подписчиков");
+        TextView followingTextView = findViewById(R.id.subscription);
+        followingTextView.setText(currentUser.getFollowingCount() + " подписок");
+        attandedTextView = findViewById(R.id.count_events_attended);
+        updateAttendedEventsCount();
 
         logOut = findViewById(R.id.exit);
         dialog = new Dialog(ProfileActivity.this);
@@ -80,6 +82,11 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
     }
+
+    private void updateAttendedEventsCount() {
+        attandedTextView.setText(currentUser.getAttendedEventsCount() + " посещенных мероприятий");
+    }
+
 
     private void showLogOutDialog() {
         dialog.setContentView(R.layout.custom_dialog_logout);
@@ -103,6 +110,14 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this, "Вы вышли из аккаунта!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            updateAttendedEventsCount(); // Обновление количества посещенных событий
+        }
     }
 
     public void goToNews(View v) {

@@ -22,6 +22,7 @@ public class AttendedEventsActivity extends AppCompatActivity {
     private ListView attendedEventsView;
     private ListAdapter listAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -14,6 +14,8 @@ import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
 import com.aakulova.letsevent.databinding.ActivityEventBinding;
+import com.aakulova.letsevent.user.User;
+import com.aakulova.letsevent.user.UserSession;
 
 import java.util.ArrayList;
 
@@ -46,22 +48,7 @@ public class EventActivity extends AppCompatActivity {
             binding.eventImage.setImageResource(image);
         }
         binding.btnGoToTheEvent.setOnClickListener(v -> {
-            ListData attendedEvent = new ListData(
-                    binding.eventName.getText().toString(),
-                    binding.dateEvent.getText().toString(),
-                    binding.descriptionEvent.getText().toString(),
-                    binding.addressEvent.getText().toString(),
-                    Integer.parseInt(binding.countPeople.getText().toString()),
-                    R.drawable.le // или другой ресурс изображения
-            );
-
-            if (attendedEvents.contains(attendedEvent)) {
-                attendedEvents.remove(attendedEvent);
-                Toast.makeText(this, "Событие удалено из списка посещенных.", Toast.LENGTH_SHORT).show();
-            } else {
-                attendedEvents.add(attendedEvent);
-                Toast.makeText(this, "Событие добавлено в список посещенных.", Toast.LENGTH_SHORT).show();
-            }
+            toggleAttendance();
         });
 
         binding.btnFoeSaving.setOnClickListener(v -> {
@@ -81,8 +68,36 @@ public class EventActivity extends AppCompatActivity {
                 savedEvents.add(savedEvent);
                 Toast.makeText(this, "Событие добавлено в избранное.", Toast.LENGTH_SHORT).show();
             }
+
         });
 
+    }
+    private void toggleAttendance() {
+        User currentUser = UserSession.getInstance().getCurrentUser();
+
+        ListData attendedEvent = new ListData(
+        binding.eventName.getText().toString(),
+        binding.dateEvent.getText().toString(),
+        binding.descriptionEvent.getText().toString(),
+        binding.addressEvent.getText().toString(),
+        Integer.parseInt(binding.countPeople.getText().toString()),
+        R.drawable.le
+        );
+
+        if (attendedEvents.contains(attendedEvent)) {
+            currentUser.decrementAttendedEventsCount();
+            attendedEvents.remove(attendedEvent);
+            Toast.makeText(this, "Событие удалено из списка посещенных.", Toast.LENGTH_SHORT).show();
+        } else {
+            currentUser.incrementAttendedEventsCount();
+            attendedEvents.add(attendedEvent);
+            Toast.makeText(this, "Событие добавлено в список посещенных.", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("updateCount", true);
+        setResult(RESULT_OK, returnIntent);
+        finish();
     }
 
     public static ArrayList<ListData> getAttendedEvents() {
