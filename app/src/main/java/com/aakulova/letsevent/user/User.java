@@ -1,7 +1,7 @@
 package com.aakulova.letsevent.user;
 
 public class User {
-    private String id;
+    private final String id;
     private String username; // Логин пользователя
     private String email;
     private String profileImageUrl; // URL изображения профиля

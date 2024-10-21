@@ -16,9 +16,6 @@
             android:name=".PublishedEventActivity"
             android:exported="false" />
         <activity
-            android:name=".user.BusinessProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".event.EventActivity"
             android:exported="false" />
         <activity

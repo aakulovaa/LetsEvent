@@ -18,7 +18,6 @@ import com.aakulova.letsevent.user.ProfileActivity;
 
 public class PublishedEventActivity extends AppCompatActivity {
 
-    private ListView publishedEventsView;
     private ListAdapter listAdapter;
 
     @Override
@@ -32,7 +31,7 @@ public class PublishedEventActivity extends AppCompatActivity {
             return insets;
         });
 
-        publishedEventsView = findViewById(R.id.publishedEventsListView);
+        ListView publishedEventsView = findViewById(R.id.publishedEventsListView);
         //ArrayList<ListData> attendedEvents = EventActivity.getAttendedEvents();
 
 //        listAdapter = new ListAdapter(this, attendedEvents);
