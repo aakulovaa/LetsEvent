@@ -15,20 +15,12 @@ public class ListData {
         this.image = image;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        ListData listData = (ListData) obj;
-        return name.equals(listData.name) &&
-                date.equals(listData.date) &&
-                address.equals(listData.address);
-    }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, date, address);
     }
+
 }
 
 

@@ -77,8 +77,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         switchToBusinessButton.setOnClickListener(v -> {
             currentUser.setAccountType("business"); // Меняем тип аккаунта
-            Intent intent = new Intent(SettingsActivity.this, BusinessProfileActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(SettingsActivity.this, BusinessProfileActivity.class);
+//            startActivity(intent);
         });
 
 
