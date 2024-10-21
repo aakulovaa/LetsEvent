@@ -54,7 +54,6 @@
       android:textSize="24sp" />
 
   <ImageButton
-      style="@style/ButtonWithoutBack"
       android:id="@+id/btnFoeSaving"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -62,8 +61,9 @@
       android:layout_alignParentEnd="true"
       android:layout_marginTop="22dp"
       android:layout_marginEnd="30dp"
+      style="@style/ButtonWithoutBack"
       app:srcCompat="@drawable/ico_saved"
-      tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+      tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
   <Button
       android:id="@+id/btnGoToTheEvent"

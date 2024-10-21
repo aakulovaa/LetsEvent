@@ -47,4 +47,18 @@
     <string name="confirm_new_user_pass">Повторите новый пароль</string>
     <string name="change_pass">Изменить пароль</string>
     <string name="no_events_in_city">Нет мероприятий в этом городе</string>
+    <string name="reg_titel">Регистрация</string>
+    <string name="emailHint">example@gmail.com</string>
+    <string name="emailLabel">Почта</string>
+    <string name="passLabel">Пароль</string>
+    <string name="repPassLabel">Повторите пароль</string>
+    <string name="reg_btn">Зарегестрироваться</string>
+    <string name="alreadyHaveLabel">Уже есть аккаунт?</string>
+    <string name="loginBtn">Войти</string>
+    <string name="loginLabel">Вход</string>
+    <string name="no_acc_yet">Еще нет аккаунта?</string>
+    <string name="logoutLabel">Выход</string>
+    <string name="ShureLabel">Вы уверены?</string>
+    <string name="logoutBtn">Выйти</string>
+    <string name="cancelBtn">Отмена</string>
 </resources>

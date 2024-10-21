@@ -130,6 +130,7 @@
         android:layout_above="@+id/linearLayout"
         android:layout_marginStart="50dp"
         android:layout_marginBottom="9dp"
+        android:layout_marginTop="20dp"
         style="@style/ButtonSelectedForLabelColor"
         android:minWidth="0dp"
         android:minHeight="0dp"

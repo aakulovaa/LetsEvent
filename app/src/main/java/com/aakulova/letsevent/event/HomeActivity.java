@@ -1,5 +1,6 @@
 package com.aakulova.letsevent.event;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -94,6 +95,7 @@ public class HomeActivity extends AppCompatActivity {
 
         noEventsTextView = findViewById(R.id.no_events_text); // Инициализация TextView
         noEventsTextView.setVisibility(View.GONE); // Скрыть по умолчанию
+
     }
 
     /**
@@ -145,30 +147,47 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    public void showRegDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_dialog_logout);
+        dialog.show();
+    }
+
+    public void showLogInDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_dialog_auth);
+        dialog.show();
+    }
+
     public void goToNotices(View v) {
         Intent intent = new Intent(this, NoticesActivity.class);
+        intent.putExtra("showRegDialog", true);
         startActivity(intent);
     }
 
 
     public void goToNews(View v) {
         Intent intent = new Intent(this, NewsActivity.class);
+        intent.putExtra("showRegDialog", true);
         startActivity(intent);
     }
 
     public void goToSaved(View v) {
         Intent intent = new Intent(this, SavedActivity.class);
+        intent.putExtra("showRegDialog", true);
         startActivity(intent);
     }
 
 
     public void goToChat(View v) {
         Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("showRegDialog", true);
         startActivity(intent);
     }
 
     public void goToProfile(View v) {
         Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra("showRegDialog", true);
         startActivity(intent);
     }
 

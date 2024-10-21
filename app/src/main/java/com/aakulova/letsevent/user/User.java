@@ -6,13 +6,17 @@ public class User {
     private String email;
     private String profileImageUrl; // URL изображения профиля
     private String accountType; // "regular" или "business"
+    private int followersCount; // Количество подписчиков
+    private int followingCount;  // Количество подписок
 
-    public User(String id, String username, String email,String profileImageUrl, String accountType) {
+    public User(String id, String username, String email, String profileImageUrl, String accountType) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.profileImageUrl = profileImageUrl;
         this.accountType = accountType;
+        this.followersCount = 0; // Изначально 0
+        this.followingCount = 0; // Изначально 0
     }
 
     public String getId() {
@@ -49,6 +53,22 @@ public class User {
 
     public void setAccountType(String accountType) {
         this.accountType = accountType;
+    }
+
+    public int getFollowersCount() {
+        return followersCount;
+    }
+
+    public void setFollowersCount(int followersCount) {
+        this.followersCount = followersCount;
+    }
+
+    public int getFollowingCount() {
+        return followingCount;
+    }
+
+    public void setFollowingCount(int followingCount) {
+        this.followingCount = followingCount;
     }
 }
 
