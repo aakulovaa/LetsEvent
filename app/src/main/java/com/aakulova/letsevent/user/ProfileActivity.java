@@ -1,7 +1,6 @@
 package com.aakulova.letsevent.user;
 
-import static com.aakulova.letsevent.R.layout.*;
-
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -35,8 +34,8 @@ public class ProfileActivity extends AppCompatActivity {
     Button logOut;
     private TextView attandedTextView;
     private TextView publishedTextView;
-    private static final int REQUEST_CODE = 1;// для идентификации запроса
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,19 +96,16 @@ public class ProfileActivity extends AppCompatActivity {
         logOut = findViewById(R.id.exit);
         dialog = new Dialog(ProfileActivity.this);
 
-        logOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLogOutDialog();
-            }
-        });
+        logOut.setOnClickListener(view -> showLogOutDialog());
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateAttendedEventsCount() {
         attandedTextView.setText(currentUser.getAttendedEventsCount() + " посещенных мероприятий");
     }
 
+    @SuppressLint("SetTextI18n")
     private void updatePublishedEventsCount() {
         publishedTextView.setText(currentUser.getPublishedEventsCount() + " опубликованных мероприятий");
     }
@@ -121,21 +117,13 @@ public class ProfileActivity extends AppCompatActivity {
         Button logout = dialog.findViewById(R.id.logout_btn);
         Button cancel = dialog.findViewById(R.id.cancel_button);
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        cancel.setOnClickListener(view -> dialog.dismiss());
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-                Toast.makeText(ProfileActivity.this, "Вы вышли из аккаунта!", Toast.LENGTH_SHORT).show();
-            }
+        logout.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+            Toast.makeText(ProfileActivity.this, "Вы вышли из аккаунта!", Toast.LENGTH_SHORT).show();
         });
     }
 
