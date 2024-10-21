@@ -24,7 +24,6 @@ public class EventActivity extends AppCompatActivity {
     ActivityEventBinding binding;
     private static ArrayList<ListData> attendedEvents = new ArrayList<>();
     private static ArrayList<ListData> savedEvents = new ArrayList<>();
-    private ListData currentEvent; // Хранение данных о текущем событии
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +32,6 @@ public class EventActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        currentEvent = (ListData) intent.getSerializableExtra("eventData"); // Передавайте объект ListData
-
 
         if (intent != null) {
             String name = intent.getStringExtra("name");

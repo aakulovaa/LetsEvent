@@ -9,6 +9,7 @@ public class User {
     private int followersCount; // Количество подписчиков
     private int followingCount;  // Количество подписок
     private int attendedEventsCount; // Количество посещенных мероприятий
+    private int publishedEventsCount; // Количество опубликованных мероприятий
 
 
     public User(String id, String username, String email, String profileImageUrl, String accountType) {
@@ -20,6 +21,7 @@ public class User {
         this.followersCount = 0; // Изначально 0
         this.followingCount = 0; // Изначально 0
         this.attendedEventsCount = 0; // Изначально 0
+        this.publishedEventsCount = 0; // Изначально 0
     }
 
     public String getId() {
@@ -85,6 +87,14 @@ public class User {
     public void incrementAttendedEventsCount() { attendedEventsCount++; }
     public void decrementAttendedEventsCount() {
         if (attendedEventsCount > 0) attendedEventsCount--;
+    }
+
+    public int getPublishedEventsCount() {
+        return publishedEventsCount;
+    }
+
+    public void setPublishedEventsCount(int publishedEventsCount) {
+        this.publishedEventsCount = publishedEventsCount;
     }
 }
 

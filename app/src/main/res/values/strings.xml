@@ -61,4 +61,6 @@
     <string name="ShureLabel">Вы уверены?</string>
     <string name="logoutBtn">Выйти</string>
     <string name="cancelBtn">Отмена</string>
+    <string name="publishedEventBtn">Опубликованные мероприятия</string>
+    <string name="publishEventBtn">Опубликовать мероприятие</string>
 </resources>

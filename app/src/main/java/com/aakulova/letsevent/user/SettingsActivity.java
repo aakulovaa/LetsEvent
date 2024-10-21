@@ -52,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_settings);
 
-        currentUser = new User("1", "Ann","user@example.com","", "regular");
+        User currentUser = UserSession.getInstance().getCurrentUser();
 
         usernameEditText = findViewById(R.id.usernameEditText);
         emailEditText = findViewById(R.id.emailEditText);
@@ -76,9 +76,12 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         switchToBusinessButton.setOnClickListener(v -> {
-            currentUser.setAccountType("business"); // Меняем тип аккаунта
-//            Intent intent = new Intent(SettingsActivity.this, BusinessProfileActivity.class);
-//            startActivity(intent);
+            if(Objects.equals(currentUser.getAccountType(), "regular")){
+                currentUser.setAccountType("business"); // Меняем тип аккаунта
+            }
+            else {
+                currentUser.setAccountType("regular"); // Меняем тип аккаунта
+            }
         });
 
 

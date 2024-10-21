@@ -33,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
     Dialog dialog;
     Button logOut;
     private TextView attandedTextView;
+    private TextView publishedTextView;
     private static final int REQUEST_CODE = 1;// для идентификации запроса
 
     @Override
@@ -47,8 +48,6 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         currentUser = UserSession.getInstance().getCurrentUser();
-        // Получаем текущего пользователя (здесь это может быть загружено из базы данных)
-        //currentUser = new User("1", "User","user@example.com","", "regular");
 
         TextView logoTextView = findViewById(R.id.user_logo);
         logoTextView.setText(currentUser.getUsername());
@@ -57,11 +56,29 @@ public class ProfileActivity extends AppCompatActivity {
         ImageView profileImage = findViewById(R.id.user_photo);
 
         TextView accountTypeTextView = findViewById(R.id.accountTypeTextView);
+
+        publishedTextView = findViewById(R.id.count_events_publish);
+        Button publishedBtn = findViewById(R.id.publishedEventBtn);
+        Button publishEventBtn = findViewById(R.id.publishEventBtn);
+
         if(Objects.equals(currentUser.getAccountType(), "regular")){
             accountTypeTextView.setText("Личный аккаунт");
+
+            publishedTextView.setVisibility(View.GONE); // Скрываем
+            publishedBtn.setVisibility(View.GONE); // Скрываем кнопку
+            publishedBtn.setEnabled(false); // Деактивируем кнопку
+            publishEventBtn.setVisibility(View.GONE); // Скрываем кнопку
+            publishEventBtn.setEnabled(false); // Деактивируем кнопку
         }
         else {
             accountTypeTextView.setText("Бизнес аккаунт");
+
+            publishedTextView.setVisibility(View.VISIBLE); // Делаем видимой
+            updatePublishedEventsCount();
+            publishedBtn.setVisibility(View.VISIBLE); // Делаем кнопку видимой
+            publishedBtn.setEnabled(true); // Активируем кнопку
+            publishEventBtn.setVisibility(View.VISIBLE); // Делаем кнопку видимой
+            publishEventBtn.setEnabled(true); // Активируем кнопку
         }
 
         TextView followersTextView = findViewById(R.id.subscriber);
@@ -85,6 +102,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void updateAttendedEventsCount() {
         attandedTextView.setText(currentUser.getAttendedEventsCount() + " посещенных мероприятий");
+    }
+
+    private void updatePublishedEventsCount() {
+        publishedTextView.setText(currentUser.getPublishedEventsCount() + " опубликованных мероприятий");
     }
 
 
