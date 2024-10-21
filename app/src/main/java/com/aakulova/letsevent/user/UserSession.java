@@ -7,7 +7,7 @@ public class UserSession {
 //    private UserSession() {}
     private UserSession() {
         // Инициализация пользователя
-        currentUser = new User("1", "User", "user@example.com", "", "regular");
+        currentUser = new User("1", "User", "user@example.com", "", "business");
     }
 
     public static UserSession getInstance() {

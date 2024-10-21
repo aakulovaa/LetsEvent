@@ -20,6 +20,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.aakulova.letsevent.AttendedEventsActivity;
+import com.aakulova.letsevent.PublishedEventActivity;
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.SavedActivity;
 import com.aakulova.letsevent.event.HomeActivity;
@@ -80,6 +81,11 @@ public class ProfileActivity extends AppCompatActivity {
             publishEventBtn.setVisibility(View.VISIBLE); // Делаем кнопку видимой
             publishEventBtn.setEnabled(true); // Активируем кнопку
         }
+
+        publishedBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, PublishedEventActivity.class);
+            startActivity(intent);
+        });
 
         TextView followersTextView = findViewById(R.id.subscriber);
         followersTextView.setText(currentUser.getFollowersCount() + " подписчиков");
