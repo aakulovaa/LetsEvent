@@ -10,16 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.aakulova.letsevent.event.EventActivity;
 import com.aakulova.letsevent.event.HomeActivity;
 import com.aakulova.letsevent.event.ListAdapter;
-import com.aakulova.letsevent.event.ListData;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
-
-import java.util.ArrayList;
 
 public class PublishedEventActivity extends AppCompatActivity {
 

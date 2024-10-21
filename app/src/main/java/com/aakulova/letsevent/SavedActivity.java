@@ -23,9 +23,6 @@ import java.util.ArrayList;
 
 public class SavedActivity extends AppCompatActivity {
 
-    private ListView savedEventsView;
-    private ListAdapter listAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +35,10 @@ public class SavedActivity extends AppCompatActivity {
             return insets;
         });
 
-        savedEventsView = findViewById(R.id.savedEventsListView);
+        ListView savedEventsView = findViewById(R.id.savedEventsListView);
         ArrayList<ListData> attendedEvents = EventActivity.getSavedEvents();
 
-        listAdapter = new ListAdapter(this, attendedEvents);
+        ListAdapter listAdapter = new ListAdapter(this, attendedEvents);
         savedEventsView.setAdapter(listAdapter);
 
     }

@@ -63,4 +63,5 @@
     <string name="cancelBtn">Отмена</string>
     <string name="publishedEventBtn">Опубликованные мероприятия</string>
     <string name="publishEventBtn">Опубликовать мероприятие</string>
+    <string name="editEvent">Редактировать</string>
 </resources>

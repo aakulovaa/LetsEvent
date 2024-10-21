@@ -19,19 +19,16 @@ import java.util.ArrayList;
 
 public class AttendedEventsActivity extends AppCompatActivity {
 
-    private ListView attendedEventsView;
-    private ListAdapter listAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attended_events);
 
-        attendedEventsView = findViewById(R.id.attendedEventsListView);
+        ListView attendedEventsView = findViewById(R.id.attendedEventsListView);
         ArrayList<ListData> attendedEvents = EventActivity.getAttendedEvents();
 
-        listAdapter = new ListAdapter(this, attendedEvents);
+        ListAdapter listAdapter = new ListAdapter(this, attendedEvents);
         attendedEventsView.setAdapter(listAdapter);
     }
 

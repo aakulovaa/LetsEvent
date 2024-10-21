@@ -8,15 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.SavedActivity;
 import com.aakulova.letsevent.user.ChatActivity;
@@ -32,7 +29,6 @@ public class HomeActivity extends AppCompatActivity {
     private final String[] city = {"Москва", "Воронеж", "Орел"};
 
     private final int[] eventImage = {R.drawable.le,R.drawable.le,R.drawable.le};
-    private final int[] countPeople = {10, 253, 382};
     private final String[] eventName = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
     private final String[] eventDate = {"28 сентября 11:00", "28 сентября 11:00", "28 сентября 11:00"};
     private final String[] eventDesc = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
@@ -42,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ListAdapter listAdapter;
     ArrayList<ListData> dataArrayList = new ArrayList<>();
-    private ArrayList<ListData> filteredDataArrayList = new ArrayList<>();
+    private final ArrayList<ListData> filteredDataArrayList = new ArrayList<>();
 
     private TextView noEventsTextView; // TextView для сообщения об отсутствии мероприятий
 
@@ -83,10 +79,16 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         /** список мероприятий*/
+//        for (int i = 0; i < eventName.length; i++) {
+//            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i]);
+//            dataArrayList.add(listData);
+//        }
+
         for (int i = 0; i < eventName.length; i++) {
-            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i]);
+            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i], "1"); // Пример с идентификатором автора
             dataArrayList.add(listData);
         }
+
         filteredDataArrayList.addAll(dataArrayList); // Изначально показываем все элементы
 
         listAdapter = new ListAdapter(HomeActivity.this, filteredDataArrayList);

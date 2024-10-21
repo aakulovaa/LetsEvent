@@ -1,13 +1,14 @@
 package com.aakulova.letsevent.event;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.aakulova.letsevent.AttendedEventsActivity;
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.SavedActivity;
 import com.aakulova.letsevent.user.ChatActivity;
@@ -18,13 +19,15 @@ import com.aakulova.letsevent.user.User;
 import com.aakulova.letsevent.user.UserSession;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class EventActivity extends AppCompatActivity {
 
     ActivityEventBinding binding;
-    private static ArrayList<ListData> attendedEvents = new ArrayList<>();
-    private static ArrayList<ListData> savedEvents = new ArrayList<>();
+    private static final ArrayList<ListData> attendedEvents = new ArrayList<>();
+    private static final ArrayList<ListData> savedEvents = new ArrayList<>();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +51,7 @@ public class EventActivity extends AppCompatActivity {
             binding.countPeople.setText(countPeople + " участников"); // Преобразование в строку
             binding.eventImage.setImageResource(image);
         }
-        binding.btnGoToTheEvent.setOnClickListener(v -> {
-            toggleAttendance();
-        });
+        binding.btnGoToTheEvent.setOnClickListener(v -> toggleAttendance());
 
         binding.btnFoeSaving.setOnClickListener(v -> {
             ListData savedEvent = new ListData(
@@ -72,17 +73,45 @@ public class EventActivity extends AppCompatActivity {
 
         });
 
+        assert intent != null;
+        String authorId = intent.getStringExtra("authorId"); // Получаем идентификатор автора
+
+        eventEdit(authorId);
     }
+
+    private void eventEdit(String authorId) {
+        User currentUser = UserSession.getInstance().getCurrentUser();
+// Проверяем, является ли текущий пользователь автором мероприятия
+        if (Objects.equals(currentUser.getId(), authorId)) {
+            // Разрешаем редактирование
+            Button editEventBtn = findViewById(R.id.editEvent);
+
+            if (Objects.equals(currentUser.getAccountType(), "regular")) {
+                editEventBtn.setVisibility(View.GONE); // Скрываем кнопку
+                editEventBtn.setEnabled(false); // Деактивируем кнопку
+            } else {
+                editEventBtn.setVisibility(View.VISIBLE); // Делаем кнопку видимой
+                editEventBtn.setEnabled(true); // Активируем кнопку
+            }
+        }
+
+
+//        editEventBtn.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, PublishedEventActivity.class);
+//            startActivity(intent);
+//        });
+    }
+
     private void toggleAttendance() {
         User currentUser = UserSession.getInstance().getCurrentUser();
 
         ListData attendedEvent = new ListData(
-        binding.eventName.getText().toString(),
-        binding.dateEvent.getText().toString(),
-        binding.descriptionEvent.getText().toString(),
-        binding.addressEvent.getText().toString(),
-        Integer.parseInt(binding.countPeople.getText().toString()),
-        R.drawable.le
+                binding.eventName.getText().toString(),
+                binding.dateEvent.getText().toString(),
+                binding.descriptionEvent.getText().toString(),
+                binding.addressEvent.getText().toString(),
+                Integer.parseInt(binding.countPeople.getText().toString()),
+                R.drawable.le
         );
 
         if (attendedEvents.contains(attendedEvent)) {
