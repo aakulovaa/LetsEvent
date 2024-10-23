@@ -1,7 +1,9 @@
 package com.aakulova.letsevent.user;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -99,10 +101,10 @@ public class ProfileActivity extends AppCompatActivity {
         attandedTextView = findViewById(R.id.count_events_attended);
         updateAttendedEventsCount();
 
-//        logOut = findViewById(R.id.exit);
-//        dialog = new Dialog(ProfileActivity.this);
-//
-//        logOut.setOnClickListener(view -> showLogOutDialog());
+        logOut = findViewById(R.id.exit);
+        dialog = new Dialog(ProfileActivity.this);
+
+        logOut.setOnClickListener(view -> showLogOutDialog());
 
     }
 
@@ -117,21 +119,26 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-//    private void showLogOutDialog() {
-//        dialog.setContentView(R.layout.custom_dialog_logout);
-//        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        Button logout = dialog.findViewById(R.id.logout_btn);
-//        Button cancel = dialog.findViewById(R.id.cancel_button);
-//
-//        cancel.setOnClickListener(view -> dialog.dismiss());
-//
-//        logout.setOnClickListener(view -> {
-//            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
-//            startActivity(intent);
-//            finish();
-//            Toast.makeText(ProfileActivity.this, "Вы вышли из аккаунта!", Toast.LENGTH_SHORT).show();
-//        });
-//    }
+    private void showLogOutDialog() {
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_dialog_logout);
+
+        Button logoutBtn = dialog.findViewById(R.id.logout_btn);
+        Button cancelBtn = dialog.findViewById(R.id.cancel_button);
+
+        logoutBtn.setOnClickListener(v -> {
+            // Логика выхода из аккаунта
+            dialog.dismiss();
+            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+            Toast.makeText(ProfileActivity.this, "Вы вышли из аккаунта!", Toast.LENGTH_SHORT).show();
+        });
+
+        cancelBtn.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -44,7 +44,6 @@
         android:layout_marginTop="5dp"
         android:fontFamily="monospace"
         android:importantForAccessibility="no"
-        android:onClick="goToNotices"
         android:src="@drawable/ico_notices"
         style="@style/ButtonForLabelColor"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -124,24 +123,25 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/newsBtn"
             style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:importantForAccessibility="no"
-            android:onClick="goToNews"
             android:src="@drawable/ico_news"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
+            android:id="@+id/savesBtn"
             style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:importantForAccessibility="no"
-            android:onClick="goToSaved"
             android:src="@drawable/ico_saved" />
 
         <ImageButton
+            android:id="@+id/homeBtn"
             style="@style/ButtonSelectedForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -152,26 +152,24 @@
             tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
         <ImageButton
+            android:id="@+id/chatBtn"
             style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:importantForAccessibility="no"
-            android:onClick="goToChat"
             android:src="@drawable/ico_chat"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
+            android:id="@+id/profileBtn"
             style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:importantForAccessibility="no"
-            android:onClick="goToProfile"
             android:src="@drawable/ico_user"
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
-
-
 
 </RelativeLayout>
