@@ -25,6 +25,8 @@ import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.NoticesActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
+import com.aakulova.letsevent.user.User;
+import com.aakulova.letsevent.user.UserSession;
 
 import java.util.ArrayList;
 
@@ -40,13 +42,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private ListView eventsView;
 
+    private User currentUser = UserSession.getInstance().getCurrentUser();;
+
     ListAdapter listAdapter;
     ArrayList<ListData> dataArrayList = new ArrayList<>();
     private final ArrayList<ListData> filteredDataArrayList = new ArrayList<>();
 
     private TextView noEventsTextView; // TextView для сообщения об отсутствии мероприятий
 
-    private boolean isAuthenticated = false; // Переменная для проверки авторизации
     Dialog dialog;
     ImageButton notices, news, saves, home, chat, profile;
 
@@ -113,14 +116,14 @@ public class HomeActivity extends AppCompatActivity {
         notices = findViewById(R.id.ico_notices);
 
         notices.setOnClickListener(view -> {
-            if (checkAuthentication()) {
+            if (currentUser.isAuthenticated()) {
             startActivity(new Intent(this, NoticesActivity.class));
         }
         else{
             showRegDialog();
         }});
         news.setOnClickListener(view -> {
-            if (checkAuthentication()) {
+            if (currentUser.isAuthenticated()) {
                 startActivity(new Intent(this, NewsActivity.class));
             }
             else{
@@ -128,18 +131,18 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         saves.setOnClickListener(view -> {
-            if (checkAuthentication()) {
+            if (currentUser.isAuthenticated()) {
                 startActivity(new Intent(this, SavedActivity.class));
             }
             else{
                 showRegDialog();
             }
         });
-//        home.setOnClickListener(v -> {
-//            recreate(); // Обновление текущей активности
-//        });
+        home.setOnClickListener(v -> {
+            recreate(); // Обновление текущей активности
+        });
         chat.setOnClickListener(view -> {
-            if (checkAuthentication()) {
+            if (currentUser.isAuthenticated()) {
                 startActivity(new Intent(this, ChatActivity.class));
             }
             else{
@@ -147,7 +150,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         profile.setOnClickListener(view -> {
-            if (checkAuthentication()) {
+            if (currentUser.isAuthenticated()) {
                 startActivity(new Intent(this, ProfileActivity.class));
             }
             else{
@@ -206,9 +209,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private boolean checkAuthentication() {
-        return isAuthenticated;
-    }
 
     public void showRegDialog() {
         dialog = new Dialog(this);
@@ -226,13 +226,20 @@ public class HomeActivity extends AppCompatActivity {
             String repPassword = editTextRepPassword.getText().toString();
             // логика проверки входа
             if (checkCredentialsForReg(email, password, repPassword)) {
-                isAuthenticated = true; // Установите флаг авторизации
                 dialog.dismiss(); // Закрываем диалог
+
+                String id = User.generateUniqueId(); // Генерация уникального ID для нового пользователя
+                String username = User.generateRandomUsername();
+                String profileImageUrl = ""; // URL изображения профиля
+                String accountType = "regular"; // Или "business"
+
+                currentUser = new User(id, username, email,password,repPassword, profileImageUrl, accountType);
+                UserSession.getInstance().setCurrentUser(currentUser);
+
                 showLogInDialog();
             } else {
                 // Обработка неверных данных
                 Toast.makeText(HomeActivity.this, "Ошибка регистрации! Проверьте корректность данных и попробуйте снова", Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -247,7 +254,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private boolean checkCredentialsForReg(String email, String password, String repPassword) {
         //логика проверки (например, через API или локальную базу данных)
-        //return email.equals("user@example.com") && password.equals("password") && password.equals(repPassword);
+//        User currentUser = UserSession.getInstance().getCurrentUser();
+//        return email.equals(currentUser.getEmail()) && password.equals(currentUser.getPassword()) && password.equals(currentUser.getRepPass());
         return true;
     }
 
@@ -265,7 +273,8 @@ public class HomeActivity extends AppCompatActivity {
             String password = editTextPassword.getText().toString();
             // логика проверки входа
             if (checkCredentials(email, password)) {
-                isAuthenticated = true; // флаг авторизации
+                currentUser.setAuthenticated(true);
+                UserSession.getInstance().setCurrentUser(currentUser);
                 dialog.dismiss(); // Закрываем диалог
             } else {
                 // Обработка неверных данных
@@ -283,60 +292,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private boolean checkCredentials(String email, String password) {
-        //логика проверки (например, через API или локальную базу данных)
-        //return email.equals("user@example.com") && password.equals("password");
+//        //логика проверки (например, через API или локальную базу данных)
+//        User currentUser = UserSession.getInstance().getCurrentUser();
+//        return email.equals(currentUser.getEmail()) && password.equals(currentUser.getPassword());
         return true;
     }
-
-//    public void goToNotices(View v) {
-//        if (checkAuthentication()) {
-//            Intent intent = new Intent(this, NoticesActivity.class);
-//            startActivity(intent);
-//        }
-//        else{
-//            showRegDialog();
-//        }
-//    }
-
-//    public void goToNews(View v) {
-//        if (checkAuthentication()) {
-//            Intent intent = new Intent(this, NewsActivity.class);
-//            startActivity(intent);
-//        }
-//        else{
-//            showRegDialog();
-//        }
-//    }
-
-//    public void goToSaved(View v) {
-//        if (checkAuthentication()) {
-//            Intent intent = new Intent(this, SavedActivity.class);
-//            startActivity(intent);
-//        }
-//        else{
-//            showRegDialog();
-//        }
-//    }
-
-
-//    public void goToChat(View v) {
-//        if (checkAuthentication()) {
-//            Intent intent = new Intent(this, ChatActivity.class);
-//            startActivity(intent);
-//        }
-//        else{
-//            showRegDialog();
-//        }
-//    }
-
-//    public void goToProfile(View v) {
-//        if (checkAuthentication()) {
-//            Intent intent = new Intent(this, ProfileActivity.class);
-//            startActivity(intent);
-//        }
-//        else{
-//            showRegDialog();
-//        }
-//    }
-
 }

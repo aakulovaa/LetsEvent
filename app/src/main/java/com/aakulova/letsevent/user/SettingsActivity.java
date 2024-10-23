@@ -38,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
 
     private User currentUser;
-    private EditText usernameEditText, emailEditText;
+    private EditText usernameEditText, emailEditText, currentPasswordEditText, newPasswordEditText, confirmPasswordEditText;
     private ImageView profileImageView;
     private Uri profileImageUri;
     private LinearLayout editProfileLayout;
@@ -64,6 +64,7 @@ public class SettingsActivity extends AppCompatActivity {
         editProfileLayout = findViewById(R.id.editProfileLayout);
         changePasswordLayout = findViewById(R.id.changePasswordLayout);
         TextView accountTypeTextView = findViewById(R.id.accountTypeTextView);
+        Button saveNewPasswordButton = findViewById(R.id.saveNewPasswordButton);
 
         usernameEditText.setText(currentUser.getUsername());
         emailEditText.setText(currentUser.getEmail());
@@ -111,6 +112,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         saveChangesButton.setOnClickListener(v -> updateProfile());
+        saveNewPasswordButton.setOnClickListener(v -> updatePass());
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -118,8 +120,6 @@ public class SettingsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
 
         SwitchCompat switchCompatTheme = findViewById(R.id.switch_theme);
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
@@ -142,13 +142,30 @@ public class SettingsActivity extends AppCompatActivity {
             editor.apply();
         });//работает в светлой теме телефона
 
-//        SwitchCompat switchCompatAkk = findViewById(R.id.switch_profile);
-//        businessMode = sharedPreferences.getBoolean("businessMode", false);
-//
-//        if(businessMode){
-//            switchCompatAkk.setChecked(true);
-//        }
 
+    }
+
+    private void updatePass() {
+        String curPass = currentPasswordEditText.getText().toString();
+        String newPass = newPasswordEditText.getText().toString();
+        String newRepPass = confirmPasswordEditText.getText().toString();
+
+        if (curPass.equals(currentUser.getPassword())) {
+            if (newPass.equals(newRepPass))
+            {
+                currentUser.setPassword(newPass);
+                currentUser.setRepPass(newRepPass);
+                UserSession.getInstance().setCurrentUser(currentUser);
+            }
+            else{
+                Toast.makeText(this, "Пароли не совпадают", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        else {
+            Toast.makeText(this, "Введен неверный пароль", Toast.LENGTH_SHORT).show();
+            return;
+        }
     }
 
     private void updateProfile() {
@@ -157,7 +174,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Проверка на пустые поля
         if (newUsername.isEmpty() || newEmail.isEmpty()) {
-            Toast.makeText(this, "Username and email cannot be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Логин и email не могут быть пусты", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -167,10 +184,9 @@ public class SettingsActivity extends AppCompatActivity {
         if (profileImageUri != null) {
             currentUser.setProfileImageUrl(profileImageUri.toString());
         }
-
+        UserSession.getInstance().setCurrentUser(currentUser);
         // Здесь вы можете сохранить изменения в базе данных
-
-        Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Данные профиля успешно обновлены", Toast.LENGTH_SHORT).show();
     }
 
     public void goToBack(View v) {

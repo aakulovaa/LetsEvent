@@ -90,7 +90,6 @@ public class PublicizeEventActivity extends AppCompatActivity {
             User currentUser = UserSession.getInstance().getCurrentUser();
             currentUser.incrementPublishedEventsCount();
             Toast.makeText(this, "Событие добавлено в список опубликованных.", Toast.LENGTH_SHORT).show();
-
             Intent returnIntent = new Intent();
             returnIntent.putExtra("updateCount", true);
             setResult(RESULT_OK, returnIntent);
