@@ -19,6 +19,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.aakulova.letsevent.AttendedEventsActivity;
+import com.aakulova.letsevent.PublicizeEventActivity;
 import com.aakulova.letsevent.PublishedEventActivity;
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.SavedActivity;
@@ -86,6 +87,11 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        publishEventBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, PublicizeEventActivity.class);
+            startActivity(intent);
+        });
+
         TextView followersTextView = findViewById(R.id.subscriber);
         followersTextView.setText(currentUser.getFollowersCount() + " подписчиков");
         TextView followingTextView = findViewById(R.id.subscription);
@@ -93,10 +99,10 @@ public class ProfileActivity extends AppCompatActivity {
         attandedTextView = findViewById(R.id.count_events_attended);
         updateAttendedEventsCount();
 
-        logOut = findViewById(R.id.exit);
-        dialog = new Dialog(ProfileActivity.this);
-
-        logOut.setOnClickListener(view -> showLogOutDialog());
+//        logOut = findViewById(R.id.exit);
+//        dialog = new Dialog(ProfileActivity.this);
+//
+//        logOut.setOnClickListener(view -> showLogOutDialog());
 
     }
 
@@ -111,21 +117,21 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-    private void showLogOutDialog() {
-        dialog.setContentView(R.layout.custom_dialog_logout);
-        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Button logout = dialog.findViewById(R.id.logout_btn);
-        Button cancel = dialog.findViewById(R.id.cancel_button);
-
-        cancel.setOnClickListener(view -> dialog.dismiss());
-
-        logout.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-            Toast.makeText(ProfileActivity.this, "Вы вышли из аккаунта!", Toast.LENGTH_SHORT).show();
-        });
-    }
+//    private void showLogOutDialog() {
+//        dialog.setContentView(R.layout.custom_dialog_logout);
+//        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        Button logout = dialog.findViewById(R.id.logout_btn);
+//        Button cancel = dialog.findViewById(R.id.cancel_button);
+//
+//        cancel.setOnClickListener(view -> dialog.dismiss());
+//
+//        logout.setOnClickListener(view -> {
+//            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+//            startActivity(intent);
+//            finish();
+//            Toast.makeText(ProfileActivity.this, "Вы вышли из аккаунта!", Toast.LENGTH_SHORT).show();
+//        });
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

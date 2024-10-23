@@ -181,13 +181,13 @@
 
     <Button
         android:id="@+id/exit"
+        style="@style/ButtonWithoutBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="9dp"
         android:layout_marginTop="20dp"
-        style="@style/ButtonSelectedForLabelColor"
+        android:layout_marginBottom="9dp"
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:padding="0dp"

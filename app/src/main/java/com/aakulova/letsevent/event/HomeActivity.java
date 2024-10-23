@@ -27,7 +27,6 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
 
     private final String[] city = {"Москва", "Воронеж", "Орел"};
-
     private final int[] eventImage = {R.drawable.le,R.drawable.le,R.drawable.le};
     private final String[] eventName = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
     private final String[] eventDate = {"28 сентября 11:00", "28 сентября 11:00", "28 сентября 11:00"};
@@ -79,15 +78,15 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         /** список мероприятий*/
-//        for (int i = 0; i < eventName.length; i++) {
-//            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i]);
-//            dataArrayList.add(listData);
-//        }
-
         for (int i = 0; i < eventName.length; i++) {
-            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i], "1"); // Пример с идентификатором автора
+            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i],0, eventImage[i]);
             dataArrayList.add(listData);
         }
+
+//        for (int i = 0; i < eventName.length; i++) {
+//            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i], "1"); // Пример с идентификатором автора
+//            dataArrayList.add(listData);
+//        }
 
         filteredDataArrayList.addAll(dataArrayList); // Изначально показываем все элементы
 

@@ -48,7 +48,7 @@ public class EventActivity extends AppCompatActivity {
             binding.dateEvent.setText(date);
             binding.descriptionEvent.setText(desc);
             binding.addressEvent.setText(addr);
-            binding.countPeople.setText(countPeople + " участников"); // Преобразование в строку
+            binding.countPeople.setText(String.valueOf(countPeople));
             binding.eventImage.setImageResource(image);
         }
         binding.btnGoToTheEvent.setOnClickListener(v -> toggleAttendance());
@@ -73,34 +73,36 @@ public class EventActivity extends AppCompatActivity {
 
         });
 
-        assert intent != null;
-        String authorId = intent.getStringExtra("authorId"); // Получаем идентификатор автора
+        //assert intent != null;
+        //String authorId = intent.getStringExtra("authorId"); // Получаем идентификатор автора
 
-        eventEdit(authorId);
+        //реализовать возможность редактировать только опубликованное пользователем
+        //eventEdit();
     }
 
-    private void eventEdit(String authorId) {
-        User currentUser = UserSession.getInstance().getCurrentUser();
-// Проверяем, является ли текущий пользователь автором мероприятия
-        if (Objects.equals(currentUser.getId(), authorId)) {
-            // Разрешаем редактирование
-            Button editEventBtn = findViewById(R.id.editEvent);
 
-            if (Objects.equals(currentUser.getAccountType(), "regular")) {
-                editEventBtn.setVisibility(View.GONE); // Скрываем кнопку
-                editEventBtn.setEnabled(false); // Деактивируем кнопку
-            } else {
-                editEventBtn.setVisibility(View.VISIBLE); // Делаем кнопку видимой
-                editEventBtn.setEnabled(true); // Активируем кнопку
-            }
-        }
+//    private void eventEdit() {
+//        User currentUser = UserSession.getInstance().getCurrentUser();
+//// Проверяем, является ли текущий пользователь автором мероприятия
+//        //if (Objects.equals(currentUser.getId(), authorId)) {
+//            // Разрешаем редактирование
+//            Button editEventBtn = findViewById(R.id.editEvent);
+//
+//            if (Objects.equals(currentUser.getAccountType(), "regular")) {
+//                editEventBtn.setVisibility(View.GONE); // Скрываем кнопку
+//                editEventBtn.setEnabled(false); // Деактивируем кнопку
+//            } else {
+//                editEventBtn.setVisibility(View.VISIBLE); // Делаем кнопку видимой
+//                editEventBtn.setEnabled(true); // Активируем кнопку
+//            }
+//        //}
 
 
 //        editEventBtn.setOnClickListener(view -> {
 //            Intent intent = new Intent(this, PublishedEventActivity.class);
 //            startActivity(intent);
 //        });
-    }
+    //}
 
     private void toggleAttendance() {
         User currentUser = UserSession.getInstance().getCurrentUser();

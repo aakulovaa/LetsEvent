@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:text="@string/edit_profile"
         android:theme="@style/ButtonWithoutBack"
-        android:textColor="@color/black"
+        style="@style/TextColor"
         android:layout_marginStart="26dp"
         android:layout_marginTop="150dp"
         />
@@ -143,8 +143,8 @@
         android:text="@string/edit_yser_pass"
         android:layout_marginStart="26dp"
         android:layout_marginTop="450dp"
-        android:theme="@style/ButtonWithoutBack"
-        android:textColor="@color/black"/>
+        style="@style/TextColor"
+        android:theme="@style/ButtonWithoutBack"/>
 
     <LinearLayout
         android:id="@+id/changePasswordLayout"
