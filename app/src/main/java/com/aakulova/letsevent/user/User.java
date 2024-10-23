@@ -89,6 +89,11 @@ public class User {
         if (attendedEventsCount > 0) attendedEventsCount--;
     }
 
+    public void incrementPublishedEventsCount() { publishedEventsCount++; }
+    public void decrementPublishedEventsCount() {
+        if (publishedEventsCount > 0) publishedEventsCount--;
+    }
+
     public int getPublishedEventsCount() {
         return publishedEventsCount;
     }

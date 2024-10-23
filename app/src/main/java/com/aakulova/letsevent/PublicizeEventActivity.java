@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -16,12 +18,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.aakulova.letsevent.databinding.ActivityEventBinding;
+import com.aakulova.letsevent.databinding.ActivityPublicizeEventBinding;
 import com.aakulova.letsevent.event.HomeActivity;
+import com.aakulova.letsevent.event.ListData;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
+import com.aakulova.letsevent.user.User;
+import com.aakulova.letsevent.user.UserSession;
+
+import java.util.ArrayList;
 
 public class PublicizeEventActivity extends AppCompatActivity {
+
+    ActivityPublicizeEventBinding binding;
+    private static final ArrayList<ListData> publishedEvents = new ArrayList<>();
+
 
     private ImageView eventImageView;
     private Uri eventImageUrl;
@@ -71,6 +84,24 @@ public class PublicizeEventActivity extends AppCompatActivity {
             intent.setType("image/*");
             imagePickerLauncher.launch(intent);
         });
+
+        Button publishEventBtn = findViewById(R.id.publishEventBtn);
+        publishEventBtn.setOnClickListener(v -> {
+            User currentUser = UserSession.getInstance().getCurrentUser();
+            currentUser.incrementPublishedEventsCount();
+            Toast.makeText(this, "Событие добавлено в список опубликованных.", Toast.LENGTH_SHORT).show();
+
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("updateCount", true);
+            setResult(RESULT_OK, returnIntent);
+            finish();
+        });
+
+    }
+
+
+    public static ArrayList<ListData> getPublishedEvents() {
+        return publishedEvents;
     }
 
     public void goToBack(View v) {

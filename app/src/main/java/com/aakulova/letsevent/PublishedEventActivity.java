@@ -10,11 +10,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.aakulova.letsevent.event.EventActivity;
 import com.aakulova.letsevent.event.HomeActivity;
 import com.aakulova.letsevent.event.ListAdapter;
+import com.aakulova.letsevent.event.ListData;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
+
+import java.util.ArrayList;
 
 public class PublishedEventActivity extends AppCompatActivity {
 
@@ -32,10 +37,10 @@ public class PublishedEventActivity extends AppCompatActivity {
         });
 
         ListView publishedEventsView = findViewById(R.id.publishedEventsListView);
-        //ArrayList<ListData> attendedEvents = EventActivity.getAttendedEvents();
+        ArrayList<ListData> publishedEvents = PublicizeEventActivity.getPublishedEvents();
 
-//        listAdapter = new ListAdapter(this, attendedEvents);
-//        publishedEventsView.setAdapter(listAdapter);
+        listAdapter = new ListAdapter(this, publishedEvents);
+        publishedEventsView.setAdapter(listAdapter);
     }
 
     public void goToBack(View v) {

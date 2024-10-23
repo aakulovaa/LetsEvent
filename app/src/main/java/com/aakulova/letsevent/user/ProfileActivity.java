@@ -138,6 +138,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             updateAttendedEventsCount(); // Обновление количества посещенных событий
+            updatePublishedEventsCount();
         }
     }
 
