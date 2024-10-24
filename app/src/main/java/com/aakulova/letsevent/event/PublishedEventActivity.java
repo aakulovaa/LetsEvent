@@ -20,8 +20,6 @@ import java.util.ArrayList;
 
 public class PublishedEventActivity extends AppCompatActivity {
 
-    private ListAdapter listAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +34,7 @@ public class PublishedEventActivity extends AppCompatActivity {
         ListView publishedEventsView = findViewById(R.id.publishedEventsListView);
         ArrayList<ListData> publishedEvents = PublicizeEventActivity.getPublishedEvents();
 
-        listAdapter = new ListAdapter(this, publishedEvents);
+        ListAdapter listAdapter = new ListAdapter(this, publishedEvents);
         publishedEventsView.setAdapter(listAdapter);
     }
 

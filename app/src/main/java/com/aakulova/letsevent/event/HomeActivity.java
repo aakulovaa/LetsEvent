@@ -88,7 +88,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        /** список мероприятий*/
         for (int i = 0; i < eventName.length; i++) {
             ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i]);
             dataArrayList.add(listData);

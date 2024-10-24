@@ -22,9 +22,6 @@
             android:name=".event.EventActivity"
             android:exported="false" />
         <activity
-            android:name=".event.EventItem"
-            android:exported="false" />
-        <activity
             android:name=".user.SettingsActivity"
             android:exported="false" />
         <activity

@@ -1,7 +1,5 @@
 package com.aakulova.letsevent.user;
 
-import com.aakulova.letsevent.event.ListData;
-
 import java.util.Objects;
 
 public class NoticeListData {

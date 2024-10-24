@@ -10,19 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.aakulova.letsevent.R;
-import com.aakulova.letsevent.event.EventActivity;
 import com.aakulova.letsevent.event.HomeActivity;
-import com.aakulova.letsevent.event.ListAdapter;
-import com.aakulova.letsevent.event.ListData;
-
 import java.util.ArrayList;
 
 public class NoticesActivity extends AppCompatActivity {
-
-    private NotificationAdapter adapter;
-    private ArrayList<NoticeListData> notificationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +28,16 @@ public class NoticesActivity extends AppCompatActivity {
         });
 
         ListView noticesView = findViewById(R.id.noticesEventsListView);
-        notificationList = new ArrayList<>();
+        ArrayList<NoticeListData> notificationList = new ArrayList<>();
 
         // Пример добавления уведомлений
         notificationList.add(new NoticeListData("Новое сообщение", "https://example.com/image1.jpg", R.drawable.le));
         notificationList.add(new NoticeListData("Обновление приложения", "https://example.com/image2.jpg", R.drawable.le));
         notificationList.add(new NoticeListData("Напоминание о событии", "https://example.com/image3.jpg", R.drawable.le));
 
-        adapter = new NotificationAdapter(this, notificationList);
+        NotificationAdapter adapter = new NotificationAdapter(this, notificationList);
         noticesView.setAdapter(adapter);
 
-        //ListView noticesEventsView = findViewById(R.id.noticesEventsListView);
-//        ArrayList<ListData> attendedEvents = EventActivity.getSavedEvents();
-//
-//        ListAdapter listAdapter = new ListAdapter(this, attendedEvents);
-//        noticesEventsView.setAdapter(listAdapter);
     }
 
     public void goToBack(View v) {
