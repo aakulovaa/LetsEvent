@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.aakulova.letsevent.R;
-import com.aakulova.letsevent.SavedActivity;
+import com.aakulova.letsevent.event.SavedActivity;
 import com.aakulova.letsevent.event.HomeActivity;
 
 public class ChatActivity extends AppCompatActivity {

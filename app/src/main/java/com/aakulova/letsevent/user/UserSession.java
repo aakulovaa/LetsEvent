@@ -4,7 +4,7 @@ public class UserSession {
     private static UserSession instance;
     private User currentUser;
 
-//    private UserSession() {}
+    //    private UserSession() {}
     private UserSession() {
         // Инициализация пользователя
         currentUser = new User(User.generateUniqueId(), User.generateRandomUsername(), "user@example.com", "", "business");

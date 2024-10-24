@@ -1,49 +1,47 @@
-package com.aakulova.letsevent;
+package com.aakulova.letsevent.event;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-import com.aakulova.letsevent.event.HomeActivity;
-import com.aakulova.letsevent.event.ListAdapter;
-import com.aakulova.letsevent.event.ListData;
+import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
-import com.aakulova.letsevent.event.EventActivity;
 
 import java.util.ArrayList;
 
-public class AttendedEventsActivity extends AppCompatActivity {
+public class SavedActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attended_events);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_saved);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
-        ListView attendedEventsView = findViewById(R.id.attendedEventsListView);
-        ArrayList<ListData> attendedEvents = EventActivity.getAttendedEvents();
+        ListView savedEventsView = findViewById(R.id.savedEventsListView);
+        ArrayList<ListData> attendedEvents = EventActivity.getSavedEvents();
 
         ListAdapter listAdapter = new ListAdapter(this, attendedEvents);
-        attendedEventsView.setAdapter(listAdapter);
-    }
+        savedEventsView.setAdapter(listAdapter);
 
-    public void goToBack(View v) {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
     }
 
     public void goToNews(View v) {
         Intent intent = new Intent(this, NewsActivity.class);
-        startActivity(intent);
-    }
-
-    public void goToSaved(View v) {
-        Intent intent = new Intent(this, SavedActivity.class);
         startActivity(intent);
     }
 
@@ -54,11 +52,6 @@ public class AttendedEventsActivity extends AppCompatActivity {
 
     public void goToChat(View v) {
         Intent intent = new Intent(this, ChatActivity.class);
-        startActivity(intent);
-    }
-
-    public void goToAttended(View v) {
-        Intent intent = new Intent(this, AttendedEventsActivity.class);
         startActivity(intent);
     }
 

@@ -21,11 +21,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 
 import com.aakulova.letsevent.R;
-import com.aakulova.letsevent.SavedActivity;
+import com.aakulova.letsevent.event.SavedActivity;
 import com.aakulova.letsevent.event.HomeActivity;
 
 import java.util.Objects;
@@ -69,18 +70,16 @@ public class SettingsActivity extends AppCompatActivity {
         usernameEditText.setText(currentUser.getUsername());
         emailEditText.setText(currentUser.getEmail());
 
-        if(Objects.equals(currentUser.getAccountType(), "regular")){
+        if (Objects.equals(currentUser.getAccountType(), "regular")) {
             accountTypeTextView.setText("Бизнес аккаунт");
-        }
-        else {
+        } else {
             accountTypeTextView.setText("Личный аккаунт");
         }
 
         switchToBusinessButton.setOnClickListener(v -> {
-            if(Objects.equals(currentUser.getAccountType(), "regular")){
+            if (Objects.equals(currentUser.getAccountType(), "regular")) {
                 currentUser.setAccountType("business"); // Меняем тип аккаунта
-            }
-            else {
+            } else {
                 currentUser.setAccountType("regular"); // Меняем тип аккаунта
             }
         });
@@ -125,12 +124,12 @@ public class SettingsActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
         nightMode = sharedPreferences.getBoolean("nightMode", false);
 
-        if(nightMode){
+        if (nightMode) {
             switchCompatTheme.setChecked(true);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
         switchCompatTheme.setOnClickListener(view -> {
-            if (nightMode){
+            if (nightMode) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 editor = sharedPreferences.edit();
                 editor.putBoolean("nightMode", false);
@@ -151,18 +150,15 @@ public class SettingsActivity extends AppCompatActivity {
         String newRepPass = confirmPasswordEditText.getText().toString();
 
         if (curPass.equals(currentUser.getPassword())) {
-            if (newPass.equals(newRepPass))
-            {
+            if (newPass.equals(newRepPass)) {
                 currentUser.setPassword(newPass);
                 currentUser.setRepPass(newRepPass);
                 UserSession.getInstance().setCurrentUser(currentUser);
-            }
-            else{
+            } else {
                 Toast.makeText(this, "Пароли не совпадают", Toast.LENGTH_SHORT).show();
                 return;
             }
-        }
-        else {
+        } else {
             Toast.makeText(this, "Введен неверный пароль", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -213,6 +209,7 @@ public class SettingsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ChatActivity.class);
         startActivity(intent);
     }
+
     public void goToProfile(View v) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);

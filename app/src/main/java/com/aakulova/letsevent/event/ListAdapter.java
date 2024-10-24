@@ -17,7 +17,9 @@ import com.aakulova.letsevent.R;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/** Пользовательский адаптер для отображения списка событий. */
+/**
+ * Пользовательский адаптер для отображения списка событий.
+ */
 public class ListAdapter extends ArrayAdapter<ListData> {
     /**
      * Constructor for ListAdapter.

@@ -1,4 +1,4 @@
-package com.aakulova.letsevent;
+package com.aakulova.letsevent.event;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,10 +18,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.aakulova.letsevent.databinding.ActivityEventBinding;
+import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.databinding.ActivityPublicizeEventBinding;
-import com.aakulova.letsevent.event.HomeActivity;
-import com.aakulova.letsevent.event.ListData;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;

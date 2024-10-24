@@ -19,8 +19,8 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 import com.aakulova.letsevent.R;
-import com.aakulova.letsevent.SavedActivity;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.NoticesActivity;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
 
     private final String[] city = {"Москва", "Воронеж", "Орел"};
-    private final int[] eventImage = {R.drawable.le,R.drawable.le,R.drawable.le};
+    private final int[] eventImage = {R.drawable.le, R.drawable.le, R.drawable.le};
     private final String[] eventName = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
     private final String[] eventDate = {"28 сентября 11:00", "28 сентября 11:00", "28 сентября 11:00"};
     private final String[] eventDesc = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ListView eventsView;
 
-    private User currentUser = UserSession.getInstance().getCurrentUser();;
+    private User currentUser = UserSession.getInstance().getCurrentUser();
 
     ListAdapter listAdapter;
     ArrayList<ListData> dataArrayList = new ArrayList<>();
@@ -90,7 +90,7 @@ public class HomeActivity extends AppCompatActivity {
 
         /** список мероприятий*/
         for (int i = 0; i < eventName.length; i++) {
-            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i],0, eventImage[i]);
+            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i]);
             dataArrayList.add(listData);
         }
 
@@ -117,24 +117,22 @@ public class HomeActivity extends AppCompatActivity {
 
         notices.setOnClickListener(view -> {
             if (currentUser.isAuthenticated()) {
-            startActivity(new Intent(this, NoticesActivity.class));
-        }
-        else{
-            showRegDialog();
-        }});
+                startActivity(new Intent(this, NoticesActivity.class));
+            } else {
+                showRegDialog();
+            }
+        });
         news.setOnClickListener(view -> {
             if (currentUser.isAuthenticated()) {
                 startActivity(new Intent(this, NewsActivity.class));
-            }
-            else{
+            } else {
                 showRegDialog();
             }
         });
         saves.setOnClickListener(view -> {
             if (currentUser.isAuthenticated()) {
                 startActivity(new Intent(this, SavedActivity.class));
-            }
-            else{
+            } else {
                 showRegDialog();
             }
         });
@@ -144,16 +142,14 @@ public class HomeActivity extends AppCompatActivity {
         chat.setOnClickListener(view -> {
             if (currentUser.isAuthenticated()) {
                 startActivity(new Intent(this, ChatActivity.class));
-            }
-            else{
+            } else {
                 showRegDialog();
             }
         });
         profile.setOnClickListener(view -> {
             if (currentUser.isAuthenticated()) {
                 startActivity(new Intent(this, ProfileActivity.class));
-            }
-            else{
+            } else {
                 showRegDialog();
             }
         });
@@ -233,7 +229,7 @@ public class HomeActivity extends AppCompatActivity {
                 String profileImageUrl = ""; // URL изображения профиля
                 String accountType = "regular"; // Или "business"
 
-                currentUser = new User(id, username, email,password,repPassword, profileImageUrl, accountType);
+                currentUser = new User(id, username, email, password, repPassword, profileImageUrl, accountType);
                 UserSession.getInstance().setCurrentUser(currentUser);
 
                 showLogInDialog();

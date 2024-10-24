@@ -1,4 +1,4 @@
-package com.aakulova.letsevent;
+package com.aakulova.letsevent.event;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.aakulova.letsevent.event.EventActivity;
-import com.aakulova.letsevent.event.HomeActivity;
-import com.aakulova.letsevent.event.ListAdapter;
-import com.aakulova.letsevent.event.ListData;
+import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;

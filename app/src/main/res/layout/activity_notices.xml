@@ -44,4 +44,10 @@
 
     </RelativeLayout>
 
+    <ListView
+        android:id="@+id/noticesEventsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/upper_bg"/>
+
 </RelativeLayout>

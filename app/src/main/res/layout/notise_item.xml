@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="42dp"
         android:layout_marginTop="21dp"
-        android:contentDescription="@string/event_image"
+        android:contentDescription="Уведомление"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -29,7 +29,7 @@
         tools:ignore="HardcodedText,RelativeOverlap" />
 
     <TextView
-        android:id="@+id/dateTextView"
+        android:id="@+id/descTextView"
         style="@style/TextColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

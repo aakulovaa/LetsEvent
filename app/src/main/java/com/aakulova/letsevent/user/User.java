@@ -30,7 +30,7 @@ public class User {
         this.isAuthenticated = false;
     }
 
-    public User(String id, String username, String email,String password, String repPass, String profileImageUrl, String accountType) {
+    public User(String id, String username, String email, String password, String repPass, String profileImageUrl, String accountType) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -125,12 +125,18 @@ public class User {
         this.attendedEventsCount = attendedEventsCount;
     }
 
-    public void incrementAttendedEventsCount() { attendedEventsCount++; }
+    public void incrementAttendedEventsCount() {
+        attendedEventsCount++;
+    }
+
     public void decrementAttendedEventsCount() {
         if (attendedEventsCount > 0) attendedEventsCount--;
     }
 
-    public void incrementPublishedEventsCount() { publishedEventsCount++; }
+    public void incrementPublishedEventsCount() {
+        publishedEventsCount++;
+    }
+
     public void decrementPublishedEventsCount() {
         if (publishedEventsCount > 0) publishedEventsCount--;
     }

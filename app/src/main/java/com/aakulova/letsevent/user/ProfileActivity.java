@@ -1,12 +1,8 @@
 package com.aakulova.letsevent.user;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,11 +16,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.aakulova.letsevent.AttendedEventsActivity;
-import com.aakulova.letsevent.PublicizeEventActivity;
-import com.aakulova.letsevent.PublishedEventActivity;
+import com.aakulova.letsevent.event.AttendedEventsActivity;
+import com.aakulova.letsevent.event.PublicizeEventActivity;
+import com.aakulova.letsevent.event.PublishedEventActivity;
 import com.aakulova.letsevent.R;
-import com.aakulova.letsevent.SavedActivity;
+import com.aakulova.letsevent.event.SavedActivity;
 import com.aakulova.letsevent.event.HomeActivity;
 
 import java.util.Objects;
@@ -64,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
         Button publishedBtn = findViewById(R.id.publishedEventBtn);
         Button publishEventBtn = findViewById(R.id.publishEventBtn);
 
-        if(Objects.equals(currentUser.getAccountType(), "regular")){
+        if (Objects.equals(currentUser.getAccountType(), "regular")) {
             accountTypeTextView.setText("Личный аккаунт");
 
             publishedTextView.setVisibility(View.GONE); // Скрываем
@@ -72,8 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
             publishedBtn.setEnabled(false); // Деактивируем кнопку
             publishEventBtn.setVisibility(View.GONE); // Скрываем кнопку
             publishEventBtn.setEnabled(false); // Деактивируем кнопку
-        }
-        else {
+        } else {
             accountTypeTextView.setText("Бизнес аккаунт");
 
             publishedTextView.setVisibility(View.VISIBLE); // Делаем видимой
