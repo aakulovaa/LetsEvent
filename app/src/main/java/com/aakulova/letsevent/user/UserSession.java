@@ -1,5 +1,7 @@
 package com.aakulova.letsevent.user;
 
+import com.aakulova.letsevent.models.User;
+
 public class UserSession {
     private static UserSession instance;
     private User currentUser;

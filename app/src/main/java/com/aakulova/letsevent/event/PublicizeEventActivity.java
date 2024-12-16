@@ -23,7 +23,7 @@ import com.aakulova.letsevent.databinding.ActivityPublicizeEventBinding;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
-import com.aakulova.letsevent.user.User;
+import com.aakulova.letsevent.models.User;
 import com.aakulova.letsevent.user.UserSession;
 
 import java.util.ArrayList;

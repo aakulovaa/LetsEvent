@@ -1,9 +1,9 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.models;
 
 import java.security.SecureRandom;
 
 public class User {
-    private final String id;
+    private final String idUser;
     private String username; // Логин пользователя
     private String email;
     private String password;
@@ -16,9 +16,23 @@ public class User {
     private int attendedEventsCount; // Количество посещенных мероприятий
     private int publishedEventsCount; // Количество опубликованных мероприятий
 
+    public User(String id, String username, String email, String password, String repPass, boolean isAuthenticated, String profileImageUrl, String accountType, int followersCount, int followingCount, int attendedEventsCount, int publishedEventsCount) {
+        this.idUser = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.repPass = repPass;
+        this.isAuthenticated = isAuthenticated;
+        this.profileImageUrl = profileImageUrl;
+        this.accountType = accountType;
+        this.followersCount = followersCount;
+        this.followingCount = followingCount;
+        this.attendedEventsCount = attendedEventsCount;
+        this.publishedEventsCount = publishedEventsCount;
+    }
 
     public User(String id, String username, String email, String profileImageUrl, String accountType) {
-        this.id = id;
+        this.idUser = id;
         this.username = username;
         this.email = email;
         this.profileImageUrl = profileImageUrl;
@@ -31,7 +45,7 @@ public class User {
     }
 
     public User(String id, String username, String email, String password, String repPass, String profileImageUrl, String accountType) {
-        this.id = id;
+        this.idUser = id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -65,8 +79,8 @@ public class User {
     }
 
 
-    public String getId() {
-        return id;
+    public String getIdUser() {
+        return idUser;
     }
 
     public String getUsername() {

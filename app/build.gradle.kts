@@ -45,4 +45,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Зависимости Retrofit, Gson и OkHttp
+    implementation(libs.retrofit)
+    implementation(libs.converterGson)
+    implementation(libs.loggingInterceptor)
 }

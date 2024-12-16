@@ -30,6 +30,57 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/addNews"
+        style="@style/LinearColor"
+        android:layout_width="wrap_content"
+        android:layout_height="224dp"
+        android:layout_below="@+id/upper_bg"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginVertical="60dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="27dp"
+        android:background="@drawable/rounded_edit_text"
+        android:paddingStart="20dp"
+        tools:ignore="RtlSymmetry,UselessParent">
+
+        <TextView
+            android:id="@+id/editNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="160dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="23dp"
+            android:background="@null"
+            android:fontFamily="monospace"
+            android:paddingStart="20dp"
+            android:text="@string/goToChat"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            style="@style/ButtonColor"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_below="@+id/editNews"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="monospace"
+            android:text="Поиск друзей"
+            android:textSize="12sp" />
+
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"

@@ -55,13 +55,13 @@ public class NotificationAdapter extends ArrayAdapter<NoticeListData> {
             descTitle.setText(notification.getDesc());
 
             // Установка обработчика клика на весь элемент списка
-            convertView.setOnClickListener(v -> {
-                Intent intent = new Intent(getContext(), NoticesActivity.class);
-                intent.putExtra("name", notification.getName());
-                intent.putExtra("desc", notification.getDesc());
-                //intent.putExtra("image", notification.getImage());
-                getContext().startActivity(intent);
-            });
+//            convertView.setOnClickListener(v -> {
+//                Intent intent = new Intent(getContext(), NoticesActivity.class);
+//                intent.putExtra("name", notification.getName());
+//                intent.putExtra("desc", notification.getDesc());
+//                //intent.putExtra("image", notification.getImage());
+//                getContext().startActivity(intent);
+//            });
         }
 
         return convertView;
