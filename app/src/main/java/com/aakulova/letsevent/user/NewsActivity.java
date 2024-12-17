@@ -84,7 +84,7 @@ public class NewsActivity extends AppCompatActivity {
             // Используйте здесь ресурс по умолчанию или преобразуйте URI в ресурс
             int imageResource = imageUri != null ? R.drawable.le : R.drawable.le;
 
-            newsList.add(new NewsListData(currentUser.getUsername(), nameNews, descNews, R.drawable.le, imageResource));
+            newsList.add(new NewsListData(currentUser.getLoginUser(), nameNews, descNews, R.drawable.le, imageResource));
             newsAdapter.notifyDataSetChanged();
             editText.setText("");
             imageUri = null; // сбросить URI после публикации

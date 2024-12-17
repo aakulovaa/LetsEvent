@@ -21,6 +21,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.aakulova.letsevent.R;
+import com.aakulova.letsevent.api.CityApiService;
+import com.aakulova.letsevent.api.RetrofitClient;
+import com.aakulova.letsevent.models.CityEvent;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.NoticesActivity;
@@ -29,11 +32,15 @@ import com.aakulova.letsevent.models.User;
 import com.aakulova.letsevent.user.UserSession;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HomeActivity extends AppCompatActivity {
 
-    private final String[] city = {"Москва", "Воронеж", "Орел"};
     private final int[] eventImage = {R.drawable.le, R.drawable.le, R.drawable.le};
     private final String[] eventName = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
     private final String[] eventDate = {"28 сентября 11:00", "28 сентября 11:00", "28 сентября 11:00"};
@@ -66,12 +73,44 @@ public class HomeActivity extends AppCompatActivity {
             return insets;
         });
 
-        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.city_complete_txt);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_item, city);
-        autoCompleteTextView.setAdapter(arrayAdapter);
-        autoCompleteTextView.setOnItemClickListener((adapterView, view, i, l) -> {
-            String selectedCity = adapterView.getItemAtPosition(i).toString();
-            filterByCity(selectedCity); // Фильтрация по городу
+        CityApiService cityEventApi = RetrofitClient.getInstance().create(CityApiService.class);
+
+        Call<List<CityEvent>> callCity = cityEventApi.getCity();
+        /**
+         * Метод для получения элементов бд таблицы городов для возможности выбора и фильтрагии по городу
+         */
+        callCity.enqueue(new Callback<List<CityEvent>>() {
+            @Override
+            public void onResponse(Call<List<CityEvent>> call, Response<List<CityEvent>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<CityEvent> cityEvents = response.body();  // Получаем список городов
+
+                    // Преобразуем список городов в массив String[]
+                   String[] cityNames = new String[cityEvents.size()];
+                    for (int i = 0; i < cityEvents.size(); i++) {
+                        cityNames[i] = cityEvents.get(i).getNameCity();  // Заполняем массив названиями городов
+                    }
+                    // Устанавливаем адаптер для AutoCompleteTextView
+                    AutoCompleteTextView autoCompleteTextView = findViewById(R.id.city_complete_txt);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(HomeActivity.this, R.layout.list_item, cityNames);
+                    autoCompleteTextView.setAdapter(arrayAdapter);
+
+                    // Устанавливаем обработчик клика на элемент в списке
+                    autoCompleteTextView.setOnItemClickListener((adapterView, view, i, l) -> {
+                        String selectedCity = adapterView.getItemAtPosition(i).toString();
+                        filterByCity(selectedCity); // Фильтрация или другие действия с выбранным городом
+                    });
+
+
+                } else {
+                    Toast.makeText(HomeActivity.this, "Failed to load cities", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CityEvent>> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
 
         SearchView searchView = findViewById(R.id.searchEvent);
@@ -223,7 +262,7 @@ public class HomeActivity extends AppCompatActivity {
             if (checkCredentialsForReg(email, password, repPassword)) {
                 dialog.dismiss(); // Закрываем диалог
 
-                String id = User.generateUniqueId(); // Генерация уникального ID для нового пользователя
+                Integer id = 1;
                 String username = User.generateRandomUsername();
                 String profileImageUrl = ""; // URL изображения профиля
                 String accountType = "regular"; // Или "business"

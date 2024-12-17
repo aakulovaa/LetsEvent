@@ -68,20 +68,20 @@ public class SettingsActivity extends AppCompatActivity {
         TextView accountTypeTextView = findViewById(R.id.accountTypeTextView);
         Button saveNewPasswordButton = findViewById(R.id.saveNewPasswordButton);
 
-        usernameEditText.setText(currentUser.getUsername());
-        emailEditText.setText(currentUser.getEmail());
+        usernameEditText.setText(currentUser.getLoginUser());
+        emailEditText.setText(currentUser.getEmailUser());
 
-        if (Objects.equals(currentUser.getAccountType(), "regular")) {
+        if (Objects.equals(currentUser.getAccountTypeUser(), "regular")) {
             accountTypeTextView.setText("Бизнес аккаунт");
         } else {
             accountTypeTextView.setText("Личный аккаунт");
         }
 
         switchToBusinessButton.setOnClickListener(v -> {
-            if (Objects.equals(currentUser.getAccountType(), "regular")) {
-                currentUser.setAccountType("business"); // Меняем тип аккаунта
+            if (Objects.equals(currentUser.getAccountTypeUser(), "regular")) {
+                currentUser.setAccountTypeUser("business"); // Меняем тип аккаунта
             } else {
-                currentUser.setAccountType("regular"); // Меняем тип аккаунта
+                currentUser.setAccountTypeUser("regular"); // Меняем тип аккаунта
             }
         });
 
@@ -150,9 +150,9 @@ public class SettingsActivity extends AppCompatActivity {
         String newPass = newPasswordEditText.getText().toString();
         String newRepPass = confirmPasswordEditText.getText().toString();
 
-        if (curPass.equals(currentUser.getPassword())) {
+        if (curPass.equals(currentUser.getPasswordUser())) {
             if (newPass.equals(newRepPass)) {
-                currentUser.setPassword(newPass);
+                currentUser.setPasswordUser(newPass);
                 currentUser.setRepPass(newRepPass);
                 UserSession.getInstance().setCurrentUser(currentUser);
             } else {
@@ -176,8 +176,8 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         // Обновление данных пользователя
-        currentUser.setUsername(newUsername);
-        currentUser.setEmail(newEmail);
+        currentUser.setLoginUser(newUsername);
+        currentUser.setEmailUser(newEmail);
         if (profileImageUri != null) {
             currentUser.setProfileImageUrl(profileImageUri.toString());
         }

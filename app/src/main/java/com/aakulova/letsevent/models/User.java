@@ -3,40 +3,40 @@ package com.aakulova.letsevent.models;
 import java.security.SecureRandom;
 
 public class User {
-    private final String idUser;
-    private String username; // Логин пользователя
-    private String email;
-    private String password;
+    private final Integer idUser;
+    private String loginUser; // Логин пользователя
+    private String emailUser;
+    private String passwordUser;
     private String repPass;
     private boolean isAuthenticated;
+    private String accountTypeUser; // "regular" или "business"
     private String profileImageUrl; // URL изображения профиля
-    private String accountType; // "regular" или "business"
-    private int followersCount; // Количество подписчиков
+   private int followersCount; // Количество подписчиков
     private int followingCount;  // Количество подписок
     private int attendedEventsCount; // Количество посещенных мероприятий
     private int publishedEventsCount; // Количество опубликованных мероприятий
 
-    public User(String id, String username, String email, String password, String repPass, boolean isAuthenticated, String profileImageUrl, String accountType, int followersCount, int followingCount, int attendedEventsCount, int publishedEventsCount) {
+    public User(Integer id, String loginUser, String emailUser, String passwordUser, String repPass, boolean isAuthenticated, String profileImageUrl, String accountTypeUser, int followersCount, int followingCount, int attendedEventsCount, int publishedEventsCount) {
         this.idUser = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
+        this.loginUser = loginUser;
+        this.emailUser = emailUser;
+        this.passwordUser = passwordUser;
         this.repPass = repPass;
         this.isAuthenticated = isAuthenticated;
         this.profileImageUrl = profileImageUrl;
-        this.accountType = accountType;
+        this.accountTypeUser = accountTypeUser;
         this.followersCount = followersCount;
         this.followingCount = followingCount;
         this.attendedEventsCount = attendedEventsCount;
         this.publishedEventsCount = publishedEventsCount;
     }
 
-    public User(String id, String username, String email, String profileImageUrl, String accountType) {
+    public User(Integer id, String loginUser, String emailUser, String profileImageUrl, String accountTypeUser) {
         this.idUser = id;
-        this.username = username;
-        this.email = email;
+        this.loginUser = loginUser;
+        this.emailUser = emailUser;
         this.profileImageUrl = profileImageUrl;
-        this.accountType = accountType;
+        this.accountTypeUser = accountTypeUser;
         this.followersCount = 0; // Изначально 0
         this.followingCount = 0; // Изначально 0
         this.attendedEventsCount = 0; // Изначально 0
@@ -44,14 +44,14 @@ public class User {
         this.isAuthenticated = false;
     }
 
-    public User(String id, String username, String email, String password, String repPass, String profileImageUrl, String accountType) {
+    public User(Integer id, String loginUser, String emailUser, String passwordUser, String repPass, String profileImageUrl, String accountTypeUser) {
         this.idUser = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
+        this.loginUser = loginUser;
+        this.emailUser = emailUser;
+        this.passwordUser = passwordUser;
         this.repPass = repPass;
         this.profileImageUrl = profileImageUrl;
-        this.accountType = accountType;
+        this.accountTypeUser = accountTypeUser;
         this.followersCount = 0; // Изначально 0
         this.followingCount = 0; // Изначально 0
         this.attendedEventsCount = 0; // Изначально 0
@@ -79,24 +79,24 @@ public class User {
     }
 
 
-    public String getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLoginUser() {
+        return loginUser;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLoginUser(String loginUser) {
+        this.loginUser = loginUser;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailUser() {
+        return emailUser;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailUser(String emailUser) {
+        this.emailUser = emailUser;
     }
 
     public String getProfileImageUrl() {
@@ -107,12 +107,12 @@ public class User {
         this.profileImageUrl = profileImageUrl;
     }
 
-    public String getAccountType() {
-        return accountType;
+    public String getAccountTypeUser() {
+        return accountTypeUser;
     }
 
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
+    public void setAccountTypeUser(String accountTypeUser) {
+        this.accountTypeUser = accountTypeUser;
     }
 
     public int getFollowersCount() {
@@ -163,12 +163,12 @@ public class User {
         this.publishedEventsCount = publishedEventsCount;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordUser() {
+        return passwordUser;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordUser(String passwordUser) {
+        this.passwordUser = passwordUser;
     }
 
     public String getRepPass() {

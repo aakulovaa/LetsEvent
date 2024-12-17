@@ -1,11 +1,25 @@
 package com.aakulova.letsevent.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CityEvent {
     private Integer idCity;
-    private Event nameCity;
+    private String nameCity;
+    private Set<Event> events = new HashSet<>();
 
-    public CityEvent(Integer idCity, Event nameCity) {
+    public CityEvent(Integer idCity, String nameCity, Set<Event> events) {
         this.idCity = idCity;
+        this.nameCity = nameCity;
+        this.events = events;
+    }
+
+    public CityEvent(Integer idCity, String nameCity) {
+        this.idCity = idCity;
+        this.nameCity = nameCity;
+    }
+
+    public CityEvent(String nameCity) {
         this.nameCity = nameCity;
     }
 
@@ -17,11 +31,19 @@ public class CityEvent {
         this.idCity = idCity;
     }
 
-    public Event getNameCity() {
+    public String getNameCity() {
         return nameCity;
     }
 
-    public void setNameCity(Event nameCity) {
+    public void setNameCity(String nameCity) {
         this.nameCity = nameCity;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
     }
 }

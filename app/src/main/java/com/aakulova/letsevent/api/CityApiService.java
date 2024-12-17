@@ -26,11 +26,11 @@ public interface CityApiService {
     Call<CityEvent> saveCityEvent(@Body CityEvent cityEvent);
 
     @GET("/api/v1/city_events/{name}")
-    Call<CityEvent> findByNameCityEvent(@Path("name") Event name);
+    Call<CityEvent> findByNameCityEvent(@Path("name") String name);
 
     @PUT("/api/v1/city_events/update_city_event")
     Call<CityEvent> updateCityEvent(@Path("idCity") Integer idCity, @Body CityEvent cityEvent);
 
     @DELETE("/api/v1/city_events/delete_city_event/{name}")
-    Call<Void> deleteCityEvent(@Path("name") Event name);
+    Call<Void> deleteCityEvent(@Path("name") String name);
 }

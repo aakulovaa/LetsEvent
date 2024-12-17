@@ -3,8 +3,11 @@ package com.aakulova.letsevent.api;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Клиент Retrofit, чтобы использовать интерфейсы API и отправлять запросы на сервер.
+ */
 public class RetrofitClient {
-    private static final String BASE_URL = "http://localhost:8080";
+    private static final String BASE_URL = "http://192.168.1.53:8080";
     private static Retrofit retrofit;
 
     public static Retrofit getInstance() {

@@ -9,7 +9,7 @@ public class UserSession {
     //    private UserSession() {}
     private UserSession() {
         // Инициализация пользователя
-        currentUser = new User(User.generateUniqueId(), User.generateRandomUsername(), "user@example.com", "", "business");
+        currentUser = new User(1, User.generateRandomUsername(), "user@example.com", "", "business");
     }
 
     public static UserSession getInstance() {

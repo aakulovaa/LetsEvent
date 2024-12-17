@@ -50,9 +50,9 @@ public class ProfileActivity extends AppCompatActivity {
         currentUser = UserSession.getInstance().getCurrentUser();
 
         TextView logoTextView = findViewById(R.id.user_logo);
-        logoTextView.setText(currentUser.getUsername());
+        logoTextView.setText(currentUser.getLoginUser());
         TextView emailTextView = findViewById(R.id.emailTextView);
-        emailTextView.setText(currentUser.getEmail());
+        emailTextView.setText(currentUser.getEmailUser());
         ImageView profileImage = findViewById(R.id.user_photo);
 
         TextView accountTypeTextView = findViewById(R.id.accountTypeTextView);
@@ -61,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         Button publishedBtn = findViewById(R.id.publishedEventBtn);
         Button publishEventBtn = findViewById(R.id.publishEventBtn);
 
-        if (Objects.equals(currentUser.getAccountType(), "regular")) {
+        if (Objects.equals(currentUser.getAccountTypeUser(), "regular")) {
             accountTypeTextView.setText("Личный аккаунт");
 
             publishedTextView.setVisibility(View.GONE); // Скрываем

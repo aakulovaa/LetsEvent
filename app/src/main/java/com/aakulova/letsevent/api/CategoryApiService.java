@@ -25,11 +25,11 @@ public interface CategoryApiService {
     Call<CategoryEvent> saveCategoryEvent(@Body CategoryEvent categoryEvent);
 
     @GET("/api/v1/category_events/{name}")
-    Call<CategoryEvent> findByNameCategoryEvent(@Path("name") Event nameCategory);
+    Call<CategoryEvent> findByNameCategoryEvent(@Path("name") String nameCategory);
 
     @PUT("/api/v1/category_events/update_category_event")
     Call<CategoryEvent> updateCategoryEvent(@Path("idCategory") Integer idCategory, @Body CategoryEvent categoryEvent);
 
     @DELETE("/api/v1/category_events/delete_category_event/{name}")
-    Call<Void> deleteCategoryEvent(@Path("name") Event name);
+    Call<Void> deleteCategoryEvent(@Path("name") String name);
 }

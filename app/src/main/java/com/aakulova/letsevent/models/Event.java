@@ -8,17 +8,17 @@ public class Event {
     private Integer idEvent;
     private String nameEvent;
     private LocalDate dateEvent;
-    private Set<CityEvent> cityEvent = new HashSet<>();
+    private CityEvent cityEvent;
     private String addressEvent;
     private String descEvent;
     private int countOfPeople;
-    private Set<CategoryEvent> categoryEvent = new HashSet<>();
+    private CategoryEvent categoryEvent;
     private String imgSrcUser;
     private User author;
     private Set<User> usersAttended = new HashSet<>();
     private Set<User> usersSaved = new HashSet<>();
 
-    public Event(Integer idEvent, String nameEvent, LocalDate dateEvent, Set<CityEvent> cityEvent, String addressEvent, String descEvent, int countOfPeople, Set<CategoryEvent> categoryEvent, String imgSrcUser, User author, Set<User> usersAttended, Set<User> usersSaved) {
+    public Event(Integer idEvent, String nameEvent, LocalDate dateEvent, CityEvent cityEvent, String addressEvent, String descEvent, int countOfPeople, CategoryEvent categoryEvent, String imgSrcUser, User author, Set<User> usersAttended, Set<User> usersSaved) {
         this.idEvent = idEvent;
         this.nameEvent = nameEvent;
         this.dateEvent = dateEvent;
@@ -57,12 +57,20 @@ public class Event {
         this.dateEvent = dateEvent;
     }
 
-    public Set<CityEvent> getCityEvent() {
+    public CityEvent getCityEvent() {
         return cityEvent;
     }
 
-    public void setCityEvent(Set<CityEvent> cityEvent) {
+    public void setCityEvent(CityEvent cityEvent) {
         this.cityEvent = cityEvent;
+    }
+
+    public CategoryEvent getCategoryEvent() {
+        return categoryEvent;
+    }
+
+    public void setCategoryEvent(CategoryEvent categoryEvent) {
+        this.categoryEvent = categoryEvent;
     }
 
     public String getAddressEvent() {
@@ -87,14 +95,6 @@ public class Event {
 
     public void setCountOfPeople(int countOfPeople) {
         this.countOfPeople = countOfPeople;
-    }
-
-    public Set<CategoryEvent> getCategoryEvent() {
-        return categoryEvent;
-    }
-
-    public void setCategoryEvent(Set<CategoryEvent> categoryEvent) {
-        this.categoryEvent = categoryEvent;
     }
 
     public String getImgSrcUser() {
