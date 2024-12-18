@@ -33,4 +33,10 @@ public interface EventApiService {
 
     @DELETE("/api/v1/events/delete_event/{name}")
     Call<Void> deleteEvent(@Path("name") String name);
+
+    @GET("/api/v1/events/{userId}/attended")
+    Call<List<Event>> getEventsAttendedByUser();
+
+    @GET("/api/v1/events/{userId}/saved")
+    Call<List<Event>> getEventsSavedByUser();
 }

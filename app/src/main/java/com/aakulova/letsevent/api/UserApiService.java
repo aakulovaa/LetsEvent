@@ -32,4 +32,10 @@ public interface UserApiService {
 
     @DELETE("/api/v1/users/delete_user/{email}")
     Call<Void> deleteUser(@Path("email") String email);
+
+    @GET("/api/v1/users/{eventId}/attended")
+    Call<List<User>> getUsersAttendedEvent();
+
+    @GET("/api/v1/users/{eventId}/saved")
+    Call<List<User>> getUsersSavedEvent();
 }

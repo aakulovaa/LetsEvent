@@ -22,8 +22,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.api.CityApiService;
+import com.aakulova.letsevent.api.EventApiService;
 import com.aakulova.letsevent.api.RetrofitClient;
 import com.aakulova.letsevent.models.CityEvent;
+import com.aakulova.letsevent.models.Event;
 import com.aakulova.letsevent.user.ChatActivity;
 import com.aakulova.letsevent.user.NewsActivity;
 import com.aakulova.letsevent.user.NoticesActivity;
@@ -31,6 +33,7 @@ import com.aakulova.letsevent.user.ProfileActivity;
 import com.aakulova.letsevent.models.User;
 import com.aakulova.letsevent.user.UserSession;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +43,6 @@ import retrofit2.Response;
 
 
 public class HomeActivity extends AppCompatActivity {
-
-    private final int[] eventImage = {R.drawable.le, R.drawable.le, R.drawable.le};
-    private final String[] eventName = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
-    private final String[] eventDate = {"28 сентября 11:00", "28 сентября 11:00", "28 сентября 11:00"};
-    private final String[] eventDesc = {"BLACK STAR PARTY", "выставка", "арт-встреча"};
-    private final String[] eventAddr = {"Москва", "Воронеж", "Орел"};
 
     private ListView eventsView;
 
@@ -127,10 +124,33 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        for (int i = 0; i < eventName.length; i++) {
-            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i]);
-            dataArrayList.add(listData);
-        }
+//        EventApiService eventApiService = RetrofitClient.getInstance().create(EventApiService.class);
+//
+//        Call<List<Event>> callEvent = eventApiService.getEvents();
+//        /**
+//         * Метод для получения элементов бд таблицы мероприятий для занесения в список
+//         */
+//        callEvent.enqueue(new Callback<List<Event>>() {
+//            @Override
+//            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+//                if (response.isSuccessful() && response.body() != null) {
+//                    List<Event> events = response.body();
+//                    for (int i = 0; i < events.size(); i++) {
+//                        ListData listData = new ListData(events.get(i).getNameEvent(), events.get(i).getDateEvent().toString(), events.get(i).getDescEvent(), events.get(i).getAddressEvent(), events.get(i).getCountOfPeople(), R.drawable.le);
+//                        dataArrayList.add(listData);
+//                    }
+//
+//                } else {
+//                    Toast.makeText(HomeActivity.this, "Failed to load events", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Event>> call, Throwable t) {
+//                Toast.makeText(HomeActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
 
 //        for (int i = 0; i < eventName.length; i++) {
 //            ListData listData = new ListData(eventName[i], eventDate[i], eventDesc[i], eventAddr[i], 0, eventImage[i], "1"); // Пример с идентификатором автора
