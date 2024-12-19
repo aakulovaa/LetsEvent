@@ -16,6 +16,7 @@ import com.aakulova.letsevent.databinding.ActivityEventBinding;
 import com.aakulova.letsevent.models.User;
 import com.aakulova.letsevent.user.UserSession;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class EventActivity extends AppCompatActivity {
@@ -35,14 +36,14 @@ public class EventActivity extends AppCompatActivity {
 
         if (intent != null) {
             String name = intent.getStringExtra("name");
-            String date = intent.getStringExtra("date");
+            //String date = intent.getStringExtra("date");
             String desc = intent.getStringExtra("desc");
             String addr = intent.getStringExtra("addr");
             int countPeople = intent.getIntExtra("countPeople", 0);
             int image = intent.getIntExtra("image", R.drawable.le);
 
             binding.eventName.setText(name);
-            binding.dateEvent.setText(date);
+            //binding.dateEvent.setText(date);
             binding.descriptionEvent.setText(desc);
             binding.addressEvent.setText(addr);
             binding.countPeople.setText(String.valueOf(countPeople));
@@ -53,7 +54,7 @@ public class EventActivity extends AppCompatActivity {
         binding.btnFoeSaving.setOnClickListener(v -> {
             ListData savedEvent = new ListData(
                     binding.eventName.getText().toString(),
-                    binding.dateEvent.getText().toString(),
+                    //binding.dateEvent.getText().toString(),
                     binding.descriptionEvent.getText().toString(),
                     binding.addressEvent.getText().toString(),
                     Integer.parseInt(binding.countPeople.getText().toString()),
@@ -106,7 +107,7 @@ public class EventActivity extends AppCompatActivity {
 
         ListData attendedEvent = new ListData(
                 binding.eventName.getText().toString(),
-                binding.dateEvent.getText().toString(),
+                //binding.dateEvent.getText().toString(),
                 binding.descriptionEvent.getText().toString(),
                 binding.addressEvent.getText().toString(),
                 Integer.parseInt(binding.countPeople.getText().toString()),

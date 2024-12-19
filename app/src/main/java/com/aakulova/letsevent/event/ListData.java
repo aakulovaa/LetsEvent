@@ -7,9 +7,9 @@ public class ListData {
     int countPeople, image;
     //String authorId; // Идентификатор автора мероприятия
 
-    public ListData(String name, String date, String desc, String address, int countPeople, int image) {
+    public ListData(String name, String desc, String address, int countPeople, int image) {
         this.name = name;
-        this.date = date;
+        //this.date = date;
         this.desc = desc;
         this.address = address;
         this.countPeople = countPeople;

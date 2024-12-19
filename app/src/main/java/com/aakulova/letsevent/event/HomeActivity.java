@@ -21,9 +21,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.aakulova.letsevent.R;
+import com.aakulova.letsevent.api.CategoryApiService;
 import com.aakulova.letsevent.api.CityApiService;
 import com.aakulova.letsevent.api.EventApiService;
 import com.aakulova.letsevent.api.RetrofitClient;
+import com.aakulova.letsevent.models.CategoryEvent;
 import com.aakulova.letsevent.models.CityEvent;
 import com.aakulova.letsevent.models.Event;
 import com.aakulova.letsevent.user.ChatActivity;
@@ -33,7 +35,9 @@ import com.aakulova.letsevent.user.ProfileActivity;
 import com.aakulova.letsevent.models.User;
 import com.aakulova.letsevent.user.UserSession;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,6 +128,45 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        CategoryApiService categoryApiService = RetrofitClient.getInstance().create(CategoryApiService.class);
+
+        Call<List<CategoryEvent>> callCategory = categoryApiService.getCategories();
+        /**
+         * Метод для получения элементов бд таблицы категорий для возможности выбора и фильтрагии по категории
+         */
+        callCategory.enqueue(new Callback<List<CategoryEvent>>() {
+            @Override
+            public void onResponse(Call<List<CategoryEvent>> call, Response<List<CategoryEvent>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<CategoryEvent> categoryEvents = response.body();
+
+                    String[] categories = new String[categoryEvents.size()];
+                    for (int i = 0; i < categoryEvents.size(); i++) {
+                        categories[i] = categoryEvents.get(i).getNameCategory();
+                    }
+                    // Устанавливаем адаптер для AutoCompleteTextView
+                    AutoCompleteTextView autoCompleteTextView = findViewById(R.id.category_complete_txt);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(HomeActivity.this, R.layout.list_item, categories);
+                    autoCompleteTextView.setAdapter(arrayAdapter);
+
+                    // Устанавливаем обработчик клика на элемент в списке
+                    autoCompleteTextView.setOnItemClickListener((adapterView, view, i, l) -> {
+                        String selectedCategory = adapterView.getItemAtPosition(i).toString();
+                        filterByCity(selectedCategory); // Фильтрация или другие действия с выбранным городом
+                    });
+
+
+                } else {
+                    Toast.makeText(HomeActivity.this, "Failed to load cities", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CategoryEvent>> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 //        EventApiService eventApiService = RetrofitClient.getInstance().create(EventApiService.class);
 //
 //        Call<List<Event>> callEvent = eventApiService.getEvents();
@@ -136,7 +179,7 @@ public class HomeActivity extends AppCompatActivity {
 //                if (response.isSuccessful() && response.body() != null) {
 //                    List<Event> events = response.body();
 //                    for (int i = 0; i < events.size(); i++) {
-//                        ListData listData = new ListData(events.get(i).getNameEvent(), events.get(i).getDateEvent().toString(), events.get(i).getDescEvent(), events.get(i).getAddressEvent(), events.get(i).getCountOfPeople(), R.drawable.le);
+//                        ListData listData = new ListData(events.get(i).getNameEvent(), events.get(i).getDescEvent(), events.get(i).getAddressEvent(), events.get(i).getCountOfPeople(), R.drawable.le);
 //                        dataArrayList.add(listData);
 //                    }
 //
