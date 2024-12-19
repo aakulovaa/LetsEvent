@@ -46,7 +46,7 @@
     <string name="new_user_pass">Новый пароль</string>
     <string name="confirm_new_user_pass">Повторите новый пароль</string>
     <string name="change_pass">Изменить пароль</string>
-    <string name="no_events_in_city">Нет мероприятий в этом городе</string>
+    <string name="no_events_in_city">В данный момент таких мероприятий нет</string>
     <string name="reg_titel">Регистрация</string>
     <string name="emailHint">example@gmail.com</string>
     <string name="emailLabel">Почта</string>

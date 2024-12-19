@@ -152,7 +152,7 @@ public class HomeActivity extends AppCompatActivity {
                     // Устанавливаем обработчик клика на элемент в списке
                     autoCompleteTextView.setOnItemClickListener((adapterView, view, i, l) -> {
                         String selectedCategory = adapterView.getItemAtPosition(i).toString();
-                        filterByCity(selectedCategory); // Фильтрация или другие действия с выбранным городом
+                        filterByCategory(selectedCategory);
                     });
 
 
@@ -286,6 +286,22 @@ public class HomeActivity extends AppCompatActivity {
         filteredDataArrayList.clear();
         for (ListData item : dataArrayList) {
             if (item.address.equals(cityName)) {
+                filteredDataArrayList.add(item);
+            }
+        }
+        listAdapter.notifyDataSetChanged(); // Обновляем адаптер
+        checkForNoEvents(); // Проверяем наличие мероприятий
+    }
+
+    /**
+     * Фильтрует список мероприятий по категории.
+     *
+     * @param categoryName - название категории, по которому будет выполняться фильтрация.
+     */
+    private void filterByCategory(String categoryName) {
+        filteredDataArrayList.clear();
+        for (ListData item : dataArrayList) {
+            if (item.address.equals(categoryName)) {
                 filteredDataArrayList.add(item);
             }
         }
