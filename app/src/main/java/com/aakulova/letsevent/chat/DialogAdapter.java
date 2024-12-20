@@ -50,19 +50,17 @@ public class DialogAdapter extends ArrayAdapter<DialogListData> {
 
         // Загрузка изображения с помощью Glide
         if (dialog != null) {
-//            Glide.with(getContext())
-//                    .load(notification.getImage())
-//                    .into(noticeImage);
 
             nameTitle.setText(dialog.getName());
             messageTitle.setText(dialog.getMessage());
+            userImage.setImageResource(dialog.getImage());
 
             // Установка обработчика клика на весь элемент списка
             convertView.setOnClickListener(v -> {
                 Intent intent = new Intent(getContext(), DialogActivity.class);
                 intent.putExtra("name", dialog.getName());
                 intent.putExtra("message", dialog.getMessage());
-//                intent.putExtra("image", dialog.getImage());
+                intent.putExtra("image", dialog.getImage());
                 getContext().startActivity(intent);
             });
         }

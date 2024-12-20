@@ -44,23 +44,19 @@ public class UserAdapter extends ArrayAdapter<UsersListData> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.user_item, parent, false);
         }
-
         ImageView userImage = convertView.findViewById(R.id.imageView);
         TextView nameTitle = convertView.findViewById(R.id.nameTextView);
 
-        // Загрузка изображения с помощью Glide
         if (users != null) {
-//            Glide.with(getContext())
-//                    .load(notification.getImage())
-//                    .into(noticeImage);
 
             nameTitle.setText(users.getName());
+            userImage.setImageResource(users.getImage());
 
             // Установка обработчика клика на весь элемент списка
             convertView.setOnClickListener(v -> {
-                Intent intent = new Intent(getContext(), ProfileActivity.class);
+                Intent intent = new Intent(getContext(), UserAccActivity.class);
                 intent.putExtra("name", users.getName());
-                //intent.putExtra("image", users.getImage());
+                intent.putExtra("image", users.getImage());
                 getContext().startActivity(intent);
             });
         }

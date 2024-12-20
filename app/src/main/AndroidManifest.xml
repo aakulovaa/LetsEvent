@@ -17,6 +17,9 @@
         android:theme="@style/Theme.LetsEvent"
         tools:targetApi="31">
         <activity
+            android:name=".user.users_list.UserAccActivity"
+            android:exported="false" />
+        <activity
             android:name=".chat.DialogActivity"
             android:exported="false" />
         <activity
