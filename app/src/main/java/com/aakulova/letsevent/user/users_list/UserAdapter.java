@@ -1,4 +1,4 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.user.users_list;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,20 +8,24 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import com.aakulova.letsevent.R;
+import com.aakulova.letsevent.user.ProfileActivity;
+
 import java.util.ArrayList;
 
-public class NotificationAdapter extends ArrayAdapter<NoticeListData> {
+public class UserAdapter extends ArrayAdapter<UsersListData> {
     /**
      * Constructor for NotificationAdapter.
      *
      * @param context       the current context.
-     * @param notificationList the list of notifications.
+     * @param usersListData the list of notifications.
      */
-    public NotificationAdapter(@NonNull Context context, ArrayList<NoticeListData> notificationList) {
-        super(context, R.layout.notise_item, notificationList);
+    public UserAdapter(@NonNull Context context, ArrayList<UsersListData> usersListData) {
+        super(context, R.layout.user_item, usersListData);
     }
 
     /**
@@ -35,33 +39,30 @@ public class NotificationAdapter extends ArrayAdapter<NoticeListData> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        NoticeListData notification = getItem(position);
+        UsersListData users = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.notise_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.user_item, parent, false);
         }
 
-        ImageView noticeImage = convertView.findViewById(R.id.imageView);
+        ImageView userImage = convertView.findViewById(R.id.imageView);
         TextView nameTitle = convertView.findViewById(R.id.nameTextView);
-        TextView descTitle = convertView.findViewById(R.id.descTextView);
 
         // Загрузка изображения с помощью Glide
-        if (notification != null) {
+        if (users != null) {
 //            Glide.with(getContext())
 //                    .load(notification.getImage())
 //                    .into(noticeImage);
 
-            nameTitle.setText(notification.getName());
-            descTitle.setText(notification.getDesc());
+            nameTitle.setText(users.getName());
 
             // Установка обработчика клика на весь элемент списка
-//            convertView.setOnClickListener(v -> {
-//                Intent intent = new Intent(getContext(), NoticesActivity.class);
-//                intent.putExtra("name", notification.getName());
-//                intent.putExtra("desc", notification.getDesc());
-//                //intent.putExtra("image", notification.getImage());
-//                getContext().startActivity(intent);
-//            });
+            convertView.setOnClickListener(v -> {
+                Intent intent = new Intent(getContext(), ProfileActivity.class);
+                intent.putExtra("name", users.getName());
+                //intent.putExtra("image", users.getImage());
+                getContext().startActivity(intent);
+            });
         }
 
         return convertView;

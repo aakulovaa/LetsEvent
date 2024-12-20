@@ -8,8 +8,8 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.aakulova.letsevent.R;
-import com.aakulova.letsevent.user.ChatActivity;
-import com.aakulova.letsevent.user.NewsActivity;
+import com.aakulova.letsevent.chat.ChatActivity;
+import com.aakulova.letsevent.news.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
 
 import java.util.ArrayList;

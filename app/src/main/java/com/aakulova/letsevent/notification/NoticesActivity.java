@@ -1,4 +1,4 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.notification;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.event.HomeActivity;
+
 import java.util.ArrayList;
 
 public class NoticesActivity extends AppCompatActivity {

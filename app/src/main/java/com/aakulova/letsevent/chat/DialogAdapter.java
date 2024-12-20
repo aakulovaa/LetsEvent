@@ -1,4 +1,4 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.chat;
 
 import android.content.Context;
 import android.content.Intent;

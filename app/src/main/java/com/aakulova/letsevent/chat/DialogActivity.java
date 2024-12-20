@@ -1,4 +1,4 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.chat;
 
 import android.os.Bundle;
 

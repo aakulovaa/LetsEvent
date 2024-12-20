@@ -1,4 +1,4 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.chat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.event.SavedActivity;
 import com.aakulova.letsevent.event.HomeActivity;
+import com.aakulova.letsevent.news.NewsActivity;
+import com.aakulova.letsevent.user.ProfileActivity;
+import com.aakulova.letsevent.user.users_list.UsersActivity;
 
 import java.util.ArrayList;
 

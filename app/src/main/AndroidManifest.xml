@@ -17,10 +17,10 @@
         android:theme="@style/Theme.LetsEvent"
         tools:targetApi="31">
         <activity
-            android:name=".user.DialogActivity"
+            android:name=".chat.DialogActivity"
             android:exported="false" />
         <activity
-            android:name=".user.UsersActivity"
+            android:name=".user.users_list.UsersActivity"
             android:exported="false" />
         <activity
             android:name=".event.PublicizeEventActivity"
@@ -41,16 +41,16 @@
             android:name=".user.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".user.ChatActivity"
+            android:name=".chat.ChatActivity"
             android:exported="false" />
         <activity
             android:name=".event.SavedActivity"
             android:exported="false" />
         <activity
-            android:name=".user.NewsActivity"
+            android:name=".news.NewsActivity"
             android:exported="false" />
         <activity
-            android:name=".user.NoticesActivity"
+            android:name=".notification.NoticesActivity"
             android:exported="false" />
         <activity
             android:name=".event.HomeActivity"

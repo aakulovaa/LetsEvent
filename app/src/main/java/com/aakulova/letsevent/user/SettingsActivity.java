@@ -26,9 +26,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 
 import com.aakulova.letsevent.R;
+import com.aakulova.letsevent.chat.ChatActivity;
 import com.aakulova.letsevent.event.SavedActivity;
 import com.aakulova.letsevent.event.HomeActivity;
 import com.aakulova.letsevent.models.User;
+import com.aakulova.letsevent.news.NewsActivity;
 
 import java.util.Objects;
 

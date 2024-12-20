@@ -20,8 +20,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.databinding.ActivityPublicizeEventBinding;
-import com.aakulova.letsevent.user.ChatActivity;
-import com.aakulova.letsevent.user.NewsActivity;
+import com.aakulova.letsevent.chat.ChatActivity;
+import com.aakulova.letsevent.news.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
 import com.aakulova.letsevent.models.User;
 import com.aakulova.letsevent.user.UserSession;

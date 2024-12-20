@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.UsersActivity">
+    tools:context=".user.users_list.UsersActivity">
 
     <RelativeLayout
         android:id="@+id/upper_bg"

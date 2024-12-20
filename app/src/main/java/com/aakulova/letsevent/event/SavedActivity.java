@@ -12,8 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.aakulova.letsevent.R;
-import com.aakulova.letsevent.user.ChatActivity;
-import com.aakulova.letsevent.user.NewsActivity;
+import com.aakulova.letsevent.chat.ChatActivity;
+import com.aakulova.letsevent.news.NewsActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
 
 import java.util.ArrayList;

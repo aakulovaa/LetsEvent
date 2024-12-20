@@ -1,4 +1,4 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.user.users_list;
 
 import android.os.Bundle;
 import android.widget.ListView;

@@ -1,4 +1,4 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.news;
 
 public class NewsListData {
     private String userLog, nameNews, descNews;

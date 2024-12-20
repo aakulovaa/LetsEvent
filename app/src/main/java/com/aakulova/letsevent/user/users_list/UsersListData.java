@@ -1,14 +1,13 @@
-package com.aakulova.letsevent.user;
+package com.aakulova.letsevent.user.users_list;
 
 import java.util.Objects;
 
-public class NoticeListData {
-    private String name, desc;
+public class UsersListData {
+    private String name;
     private int image;
 
-    public NoticeListData(String name, String desc, int image) {
+    public UsersListData(String name, int image) {
         this.name = name;
-        this.desc = desc;
         this.image = image;
     }
 
@@ -18,14 +17,6 @@ public class NoticeListData {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
     }
 
     public int getImage() {
@@ -40,13 +31,13 @@ public class NoticeListData {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        NoticeListData noticeListData = (NoticeListData) obj;
+        UsersListData noticeListData = (UsersListData) obj;
         return name.equals(noticeListData.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, desc);
+        return Objects.hash(name);
     }
 
 }

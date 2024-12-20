@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.aakulova.letsevent.chat.ChatActivity;
 import com.aakulova.letsevent.event.AttendedEventsActivity;
 import com.aakulova.letsevent.event.PublicizeEventActivity;
 import com.aakulova.letsevent.event.PublishedEventActivity;
@@ -23,6 +24,7 @@ import com.aakulova.letsevent.R;
 import com.aakulova.letsevent.event.SavedActivity;
 import com.aakulova.letsevent.event.HomeActivity;
 import com.aakulova.letsevent.models.User;
+import com.aakulova.letsevent.news.NewsActivity;
 
 import java.util.Objects;
 

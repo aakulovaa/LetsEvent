@@ -29,17 +29,13 @@ import com.aakulova.letsevent.api.UserApiService;
 import com.aakulova.letsevent.models.CategoryEvent;
 import com.aakulova.letsevent.models.CityEvent;
 import com.aakulova.letsevent.models.Event;
-import com.aakulova.letsevent.user.ChatActivity;
-import com.aakulova.letsevent.user.NewsActivity;
-import com.aakulova.letsevent.user.NoticesActivity;
+import com.aakulova.letsevent.chat.ChatActivity;
+import com.aakulova.letsevent.news.NewsActivity;
+import com.aakulova.letsevent.notification.NoticesActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
 import com.aakulova.letsevent.models.User;
 import com.aakulova.letsevent.user.UserSession;
-import com.aakulova.letsevent.user.UsersListData;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
