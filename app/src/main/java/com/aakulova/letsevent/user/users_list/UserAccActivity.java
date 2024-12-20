@@ -3,6 +3,7 @@ package com.aakulova.letsevent.user.users_list;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +34,14 @@ import retrofit2.Response;
 
 public class UserAccActivity extends AppCompatActivity {
     ActivityUserAccBinding binding;
+    User user;
     private TextView attandedTextView;
     private TextView publishedTextView;
+    TextView followersTextView;
+    TextView followingTextView;
+    private boolean isSubscribed = false; // Флаг, указывающий на подписку пользователя
+    private Button subscribeButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,8 @@ public class UserAccActivity extends AppCompatActivity {
             binding.userLogo.setText(name);
             binding.userPhoto.setImageResource(image);
 
+            subscribeButton = findViewById(R.id.subscribe);
+
             UserApiService userApiService = RetrofitClient.getInstance().create(UserApiService.class);
 
             Call<User> callUser = userApiService.findByLogin(name);
@@ -61,10 +70,10 @@ public class UserAccActivity extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         // Если запрос успешный, получаем данные пользователя
-                        User user = response.body();
-                        TextView followersTextView = findViewById(R.id.subscriber);
+                        user = response.body();
+                        followersTextView = findViewById(R.id.subscriber);
                         followersTextView.setText(user.getFollowersCount()+ " подписчиков");
-                        TextView followingTextView = findViewById(R.id.subscription);
+                        followingTextView = findViewById(R.id.subscription);
                         followingTextView.setText(user.getFollowingCount()+ " подписок");
                         attandedTextView = findViewById(R.id.count_events_attended);
                         attandedTextView.setText(user.getAttendedEventsCount()+" посещенных мероприятий");
@@ -83,6 +92,24 @@ public class UserAccActivity extends AppCompatActivity {
                 }
             });
 
+        }
+    }
+
+    public void addFolover(View v) {
+        int countOfFolowers = user.getFollowersCount();
+        //TODO: обновление данных в бд и получение их в качестве количества подписчиков
+        if (isSubscribed) {
+            countOfFolowers--;
+            followersTextView.setText(countOfFolowers  + " подписчиков");
+            Toast.makeText(UserAccActivity.this, "Вы отписаны от " + user.getLoginUser(), Toast.LENGTH_SHORT).show();
+            isSubscribed=false;
+            subscribeButton.setText("Подписаться");
+        }else {
+            countOfFolowers++;
+            followersTextView.setText(countOfFolowers + " подписчиков");
+            Toast.makeText(UserAccActivity.this, "Вы подписаны на " + user.getLoginUser(), Toast.LENGTH_SHORT).show();
+            isSubscribed=true;
+            subscribeButton.setText("Отписаться");
         }
     }
 
