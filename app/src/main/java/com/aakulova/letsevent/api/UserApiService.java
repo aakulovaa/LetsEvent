@@ -25,7 +25,10 @@ public interface UserApiService {
     Call<User> saveUser(@Body User user);
 
     @GET("/api/v1/users/{email}")
-    Call<User> findByEmail(@Path("name") String email);
+    Call<User> findByEmail(@Path("email") String email);
+
+    @GET("/api/v1/users/find_log/{login}")
+    Call<User> findByLogin(@Path("login") String login);
 
     @PUT("/api/v1/users/update_user")
     Call<User> updateUser(@Path("idUser") Integer idUser, @Body User user);
