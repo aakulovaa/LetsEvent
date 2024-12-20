@@ -25,6 +25,7 @@ import com.aakulova.letsevent.api.CategoryApiService;
 import com.aakulova.letsevent.api.CityApiService;
 import com.aakulova.letsevent.api.EventApiService;
 import com.aakulova.letsevent.api.RetrofitClient;
+import com.aakulova.letsevent.api.UserApiService;
 import com.aakulova.letsevent.models.CategoryEvent;
 import com.aakulova.letsevent.models.CityEvent;
 import com.aakulova.letsevent.models.Event;
@@ -34,6 +35,7 @@ import com.aakulova.letsevent.user.NoticesActivity;
 import com.aakulova.letsevent.user.ProfileActivity;
 import com.aakulova.letsevent.models.User;
 import com.aakulova.letsevent.user.UserSession;
+import com.aakulova.letsevent.user.UsersListData;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -167,32 +169,32 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-//        EventApiService eventApiService = RetrofitClient.getInstance().create(EventApiService.class);
-//
-//        Call<List<Event>> callEvent = eventApiService.getEvents();
-//        /**
-//         * Метод для получения элементов бд таблицы мероприятий для занесения в список
-//         */
-//        callEvent.enqueue(new Callback<List<Event>>() {
-//            @Override
-//            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    List<Event> events = response.body();
-//                    for (int i = 0; i < events.size(); i++) {
-//                        ListData listData = new ListData(events.get(i).getNameEvent(), events.get(i).getDescEvent(), events.get(i).getAddressEvent(), events.get(i).getCountOfPeople(), R.drawable.le);
-//                        dataArrayList.add(listData);
-//                    }
-//
-//                } else {
-//                    Toast.makeText(HomeActivity.this, "Failed to load events", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Event>> call, Throwable t) {
-//                Toast.makeText(HomeActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        EventApiService eventApiService = RetrofitClient.getInstance().create(EventApiService.class);
+
+        Call<List<Event>> callEvent = eventApiService.getEvents();
+        ArrayList<ListData> eventsListData = new ArrayList<>();
+        /**
+         * Метод для получения элементов бд таблицы мероприятий для занесения в список
+         */
+        callEvent.enqueue(new Callback<List<Event>>() {
+            @Override
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Event> events = response.body();
+                    for (int i = 0; i < events.size(); i++) {
+                        eventsListData.add(new ListData(events.get(i).getNameEvent(), events.get(i).getDescEvent(), events.get(i).getAddressEvent(), events.get(i).getCountOfPeople(), R.drawable.le));
+                    }
+
+                } else {
+                    Toast.makeText(HomeActivity.this, "Failed to load events", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Event>> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 //        for (int i = 0; i < eventName.length; i++) {
@@ -217,42 +219,52 @@ public class HomeActivity extends AppCompatActivity {
         notices = findViewById(R.id.ico_notices);
 
         notices.setOnClickListener(view -> {
-            if (currentUser.isAuthenticated()) {
-                startActivity(new Intent(this, NoticesActivity.class));
-            } else {
-                showRegDialog();
-            }
+            startActivity(new Intent(this, NoticesActivity.class));
+//            if (currentUser.isAuthenticated()) {
+//                startActivity(new Intent(this, NoticesActivity.class));
+//            } else {
+//                //showRegDialog();
+//                showLogInDialog();
+//            }
         });
         news.setOnClickListener(view -> {
-            if (currentUser.isAuthenticated()) {
-                startActivity(new Intent(this, NewsActivity.class));
-            } else {
-                showRegDialog();
-            }
+            startActivity(new Intent(this, NewsActivity.class));
+//            if (currentUser.isAuthenticated()) {
+//                startActivity(new Intent(this, NewsActivity.class));
+//            } else {
+//                //showRegDialog();
+//                showLogInDialog();
+//            }
         });
         saves.setOnClickListener(view -> {
-            if (currentUser.isAuthenticated()) {
-                startActivity(new Intent(this, SavedActivity.class));
-            } else {
-                showRegDialog();
-            }
+            startActivity(new Intent(this, SavedActivity.class));
+//            if (currentUser.isAuthenticated()) {
+//                startActivity(new Intent(this, SavedActivity.class));
+//            } else {
+//                //showRegDialog();
+//                showLogInDialog();
+//            }
         });
         home.setOnClickListener(v -> {
             recreate(); // Обновление текущей активности
         });
         chat.setOnClickListener(view -> {
-            if (currentUser.isAuthenticated()) {
-                startActivity(new Intent(this, ChatActivity.class));
-            } else {
-                showRegDialog();
-            }
+            startActivity(new Intent(this, ChatActivity.class));
+//            if (currentUser.isAuthenticated()) {
+//                startActivity(new Intent(this, ChatActivity.class));
+//            } else {
+//                //showRegDialog();
+//                showLogInDialog();
+//            }
         });
         profile.setOnClickListener(view -> {
-            if (currentUser.isAuthenticated()) {
-                startActivity(new Intent(this, ProfileActivity.class));
-            } else {
-                showRegDialog();
-            }
+            startActivity(new Intent(this, ProfileActivity.class));
+//            if (currentUser.isAuthenticated()) {
+//                startActivity(new Intent(this, ProfileActivity.class));
+//            } else {
+//                //showRegDialog();
+//                showLogInDialog();
+//            }
         });
 
     }
@@ -338,22 +350,22 @@ public class HomeActivity extends AppCompatActivity {
             String password = editTextPassword.getText().toString();
             String repPassword = editTextRepPassword.getText().toString();
             // логика проверки входа
-            if (checkCredentialsForReg(email, password, repPassword)) {
-                dialog.dismiss(); // Закрываем диалог
-
-                Integer id = 1;
-                String username = User.generateRandomUsername();
-                String profileImageUrl = ""; // URL изображения профиля
-                String accountType = "regular"; // Или "business"
-
-                currentUser = new User(id, username, email, password, repPassword, profileImageUrl, accountType);
-                UserSession.getInstance().setCurrentUser(currentUser);
-
-                showLogInDialog();
-            } else {
-                // Обработка неверных данных
-                Toast.makeText(HomeActivity.this, "Ошибка регистрации! Проверьте корректность данных и попробуйте снова", Toast.LENGTH_SHORT).show();
-            }
+//            if (checkCredentialsForReg(email, password, repPassword)) {
+//                dialog.dismiss(); // Закрываем диалог
+//
+//                Integer id = 1;
+//                String username = User.generateRandomUsername();
+//                String profileImageUrl = ""; // URL изображения профиля
+//                String accountType = "regular"; // Или "business"
+//
+//                currentUser = new User(id, username, email, password, repPassword, profileImageUrl, accountType);
+//                UserSession.getInstance().setCurrentUser(currentUser);
+//
+//                showLogInDialog();
+//            } else {
+//                // Обработка неверных данных
+//                Toast.makeText(HomeActivity.this, "Ошибка регистрации! Проверьте корректность данных и попробуйте снова", Toast.LENGTH_SHORT).show();
+//            }
         });
 
         buttonLogin.setOnClickListener(v -> {
@@ -365,12 +377,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private boolean checkCredentialsForReg(String email, String password, String repPassword) {
-        //логика проверки (например, через API или локальную базу данных)
-//        User currentUser = UserSession.getInstance().getCurrentUser();
-//        return email.equals(currentUser.getEmail()) && password.equals(currentUser.getPassword()) && password.equals(currentUser.getRepPass());
-        return true;
-    }
 
     public void showLogInDialog() {
         dialog = new Dialog(this);
@@ -382,18 +388,55 @@ public class HomeActivity extends AppCompatActivity {
         Button buttonReg = dialog.findViewById(R.id.regBtn);
 
         buttonLogin.setOnClickListener(v -> {
-            String email = editTextEmail.getText().toString();
-            String password = editTextPassword.getText().toString();
-            // логика проверки входа
-            if (checkCredentials(email, password)) {
-                currentUser.setAuthenticated(true);
-                UserSession.getInstance().setCurrentUser(currentUser);
-                dialog.dismiss(); // Закрываем диалог
-            } else {
-                // Обработка неверных данных
-                Toast.makeText(HomeActivity.this, "Ошибка входа! Проверьте корректность данных и попробуйте снова", Toast.LENGTH_SHORT).show();
+            String email = editTextEmail.getText().toString().trim();  // Убираем лишние пробелы
+            String password = editTextPassword.getText().toString().trim();
 
+            // Проверка на пустые поля
+            if (email.isEmpty() || password.isEmpty()) {
+                // Если одно из полей пустое, показываем сообщение и выходим из метода
+                Toast.makeText(HomeActivity.this, "Пожалуйста, введите и email, и пароль", Toast.LENGTH_SHORT).show();
+                return; // Выход из метода, не выполняем запрос
             }
+
+            UserApiService userApiService = RetrofitClient.getInstance().create(UserApiService.class);
+
+            // Вызов API с переданным email
+            Call<User> call = userApiService.findByEmail(email);
+
+            // Асинхронный запрос с обработчиками для ответа и ошибки
+            call.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        // Если пользователь найден, получаем данные
+                        User user = response.body();
+                        String userEmail = user.getEmailUser();
+                        String userPass = user.getPasswordUser();
+
+                        // Проверка пароля
+                        if (!userPass.equals(password)) {
+                            Toast.makeText(HomeActivity.this, "Неверный пароль. Попробуйте снова.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        // Устанавливаем пользователя в UserSession
+                        currentUser.setAuthenticated(true);
+                        UserSession.getInstance().setCurrentUser(user);
+
+                        dialog.dismiss();
+
+                    } else {
+                        // Ошибка входа, если пользователь не найден
+                        Toast.makeText(HomeActivity.this, "Ошибка входа! Проверьте корректность данных и попробуйте снова", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+                    // Ошибка запроса (например, если нет интернета или сервер не доступен)
+                    Toast.makeText(HomeActivity.this, "Ошибка: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
         buttonReg.setOnClickListener(v -> {
@@ -404,10 +447,5 @@ public class HomeActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private boolean checkCredentials(String email, String password) {
-//        //логика проверки (например, через API или локальную базу данных)
-//        User currentUser = UserSession.getInstance().getCurrentUser();
-//        return email.equals(currentUser.getEmail()) && password.equals(currentUser.getPassword());
-        return true;
-    }
+
 }

@@ -31,7 +31,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/addNews"
+        android:id="@+id/newFriends"
         style="@style/LinearColor"
         android:layout_width="wrap_content"
         android:layout_height="224dp"
@@ -41,7 +41,7 @@
         android:layout_marginHorizontal="60dp"
         android:layout_marginVertical="60dp"
         android:layout_marginStart="29dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="27dp"
         android:layout_marginEnd="27dp"
         android:background="@drawable/rounded_edit_text"
         android:paddingStart="20dp"
@@ -75,46 +75,48 @@
             android:layout_marginEnd="18dp"
             android:layout_marginBottom="12dp"
             android:fontFamily="monospace"
-            android:text="Поиск друзей"
+            android:text="@string/find_friend"
+            android:onClick="goToUsersList"
             android:textSize="12sp" />
 
 
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
+        style="@style/LinearColor"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        style="@style/LinearColor"
+        android:orientation="horizontal"
         tools:ignore="UselessParent">
 
         <ImageButton
+            style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:importantForAccessibility="no"
             android:onClick="goToNews"
             android:src="@drawable/ico_news"
-            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
+            style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
             android:onClick="goToSaved"
-            android:src="@drawable/ico_saved"
-            style="@style/ButtonForLabelColor"
-            android:importantForAccessibility="no"/>
+            android:src="@drawable/ico_saved" />
 
         <ImageButton
+            style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:importantForAccessibility="no"
             android:onClick="goToHome"
-            android:src="@drawable/ico_home_black"
-            style="@style/ButtonForLabelColor" />
+            android:src="@drawable/ico_home_black" />
 
         <ImageButton
             style="@style/ButtonSelectedForLabelColor"
@@ -126,14 +128,23 @@
             tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
         <ImageButton
+            style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:importantForAccessibility="no"
             android:onClick="goToProfile"
             android:src="@drawable/ico_user"
-            style="@style/ButtonForLabelColor"
             tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/dialogsListView"
+        android:layout_width="match_parent"
+        android:layout_height="304dp"
+        android:layout_above="@+id/linearLayout4"
+        android:layout_below="@+id/newFriends"
+        android:layout_marginTop="-34dp"
+        android:layout_marginBottom="4dp" />
 </RelativeLayout>

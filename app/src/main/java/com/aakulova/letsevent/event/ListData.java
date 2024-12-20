@@ -33,13 +33,12 @@ public class ListData {
         if (obj == null || getClass() != obj.getClass()) return false;
         ListData listData = (ListData) obj;
         return name.equals(listData.name) &&
-                date.equals(listData.date) &&
                 address.equals(listData.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date, address);
+        return Objects.hash(name, address);
     }
 
 }
