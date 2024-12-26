@@ -99,13 +99,15 @@ public class UserAccActivity extends AppCompatActivity {
         int countOfFolowers = user.getFollowersCount();
         //TODO: обновление данных в бд и получение их в качестве количества подписчиков
         if (isSubscribed) {
-            countOfFolowers--;
+            user.setFollowersCount(countOfFolowers-1);
+            countOfFolowers = user.getFollowersCount();
             followersTextView.setText(countOfFolowers  + " подписчиков");
             Toast.makeText(UserAccActivity.this, "Вы отписаны от " + user.getLoginUser(), Toast.LENGTH_SHORT).show();
             isSubscribed=false;
             subscribeButton.setText("Подписаться");
         }else {
-            countOfFolowers++;
+            user.setFollowersCount(countOfFolowers+1);
+            countOfFolowers = user.getFollowersCount();
             followersTextView.setText(countOfFolowers + " подписчиков");
             Toast.makeText(UserAccActivity.this, "Вы подписаны на " + user.getLoginUser(), Toast.LENGTH_SHORT).show();
             isSubscribed=true;
