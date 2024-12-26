@@ -48,7 +48,6 @@ public class DialogAdapter extends ArrayAdapter<DialogListData> {
         TextView nameTitle = convertView.findViewById(R.id.nameTextView);
         TextView messageTitle = convertView.findViewById(R.id.messageTextView);
 
-        // Загрузка изображения с помощью Glide
         if (dialog != null) {
 
             nameTitle.setText(dialog.getName());

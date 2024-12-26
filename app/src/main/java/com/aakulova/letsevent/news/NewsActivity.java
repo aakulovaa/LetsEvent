@@ -55,8 +55,7 @@ public class NewsActivity extends AppCompatActivity {
         newsList = new ArrayList<>();
         newsAdapter = new NewsAdapter(this, newsList);
 
-        // Предполагаем, что есть ListView или RecyclerView для отображения новостей
-        ListView listView = findViewById(R.id.newsListView); // замените на ваш ID
+        ListView listView = findViewById(R.id.newsListView);
         listView.setAdapter(newsAdapter);
 
         sendBtn.setOnClickListener(view -> publishNews());
@@ -73,7 +72,6 @@ public class NewsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             imageUri = data.getData();
-            // Если нужно отобразить выбранное изображение, можете использовать imageUri
         }
     }
 
@@ -84,7 +82,6 @@ public class NewsActivity extends AppCompatActivity {
             String nameNews = parts[0]; // Первую строку берем как название
             String descNews = parts.length > 1 ? parts[1] : ""; // Остальное как описание
 
-            // Используйте здесь ресурс по умолчанию или преобразуйте URI в ресурс
             int imageResource = imageUri != null ? R.drawable.le : R.drawable.le;
 
             newsList.add(new NewsListData(currentUser.getLoginUser(), nameNews, descNews, R.drawable.le, imageResource));

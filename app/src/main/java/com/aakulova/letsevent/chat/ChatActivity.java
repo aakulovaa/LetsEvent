@@ -36,7 +36,7 @@ public class ChatActivity extends AppCompatActivity {
         ListView dialogView = findViewById(R.id.dialogsListView);
         ArrayList<DialogListData> dialogList = new ArrayList<>();
 
-        // Пример добавления уведомлений
+        // Пример добавления чатов
         dialogList.add(new DialogListData("Новое сообщение", "https://example.com/image1.jpg", R.drawable.le));
         dialogList.add(new DialogListData("Обновление приложения", "https://example.com/image2.jpg", R.drawable.le));
         dialogList.add(new DialogListData("Напоминание о событии", "https://example.com/image3.jpg", R.drawable.le));
