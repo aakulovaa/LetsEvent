@@ -113,7 +113,7 @@
             style="@style/ButtonForLabelColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
+            android:layout_marginHorizontal="21dp"
             android:importantForAccessibility="no"
             android:onClick="goToHome"
             android:src="@drawable/ico_home_black" />
