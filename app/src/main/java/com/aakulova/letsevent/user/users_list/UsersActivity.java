@@ -42,10 +42,6 @@ public class UsersActivity extends AppCompatActivity {
         ListView usersView = findViewById(R.id.usersListView);
         ArrayList<UsersListData> usersListData = new ArrayList<>();
 
-//        usersListData.add(new UsersListData("admin", R.drawable.le));
-//        usersListData.add(new UsersListData("user1", R.drawable.le));
-//        usersListData.add(new UsersListData("user2", R.drawable.le));
-
         UserApiService userApiService = RetrofitClient.getInstance().create(UserApiService.class);
 
         Call<List<User>> callUser = userApiService.getUsers();

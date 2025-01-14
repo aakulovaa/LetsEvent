@@ -1,15 +1,16 @@
 package com.aakulova.letsevent.models;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Chat {
     private Integer idChat;
     private User userSender;
     private User userReceiver;
     private String messageChat;
-    private LocalDateTime sendAt;
+    private String sendAt;
 
-    public Chat(Integer idChat, User userSender, User userReceiver, String messageChat, LocalDateTime sendAt) {
+    public Chat(Integer idChat, User userSender, User userReceiver, String messageChat, String sendAt) {
         this.idChat = idChat;
         this.userSender = userSender;
         this.userReceiver = userReceiver;
@@ -49,11 +50,11 @@ public class Chat {
         this.messageChat = messageChat;
     }
 
-    public LocalDateTime getSendAt() {
+    public String getSendAt() {
         return sendAt;
     }
 
-    public void setSendAt(LocalDateTime sendAt) {
+    public void setSendAt(String sendAt) {
         this.sendAt = sendAt;
     }
 }

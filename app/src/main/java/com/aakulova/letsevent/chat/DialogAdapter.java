@@ -47,11 +47,13 @@ public class DialogAdapter extends ArrayAdapter<DialogListData> {
         ImageView userImage = convertView.findViewById(R.id.imageView);
         TextView nameTitle = convertView.findViewById(R.id.nameTextView);
         TextView messageTitle = convertView.findViewById(R.id.messageTextView);
+        TextView timeTitle = convertView.findViewById(R.id.message_time);
 
         if (dialog != null) {
 
             nameTitle.setText(dialog.getName());
             messageTitle.setText(dialog.getMessage());
+            timeTitle.setText(dialog.getTime());
             userImage.setImageResource(dialog.getImage());
 
             // Установка обработчика клика на весь элемент списка
@@ -59,6 +61,7 @@ public class DialogAdapter extends ArrayAdapter<DialogListData> {
                 Intent intent = new Intent(getContext(), DialogActivity.class);
                 intent.putExtra("name", dialog.getName());
                 intent.putExtra("message", dialog.getMessage());
+                intent.putExtra("time", dialog.getTime());
                 intent.putExtra("image", dialog.getImage());
                 getContext().startActivity(intent);
             });

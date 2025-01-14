@@ -3,12 +3,13 @@ package com.aakulova.letsevent.chat;
 import java.util.Objects;
 
 public class DialogListData {
-    private String name, message;
+    private String name, message, time;
     private int image;
 
-    public DialogListData(String name, String message, int image) {
+    public DialogListData(String name, String message, String time, int image) {
         this.name = name;
         this.message = message;
+        this.time = time;
         this.image = image;
     }
 
@@ -26,6 +27,14 @@ public class DialogListData {
 
     public void setMessage(String desc) {
         this.message = message;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public int getImage() {
