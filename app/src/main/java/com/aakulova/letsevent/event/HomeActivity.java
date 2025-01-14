@@ -26,6 +26,7 @@ import com.aakulova.letsevent.api.CityApiService;
 import com.aakulova.letsevent.api.EventApiService;
 import com.aakulova.letsevent.api.RetrofitClient;
 import com.aakulova.letsevent.api.UserApiService;
+import com.aakulova.letsevent.chat.DialogAdapter;
 import com.aakulova.letsevent.models.CategoryEvent;
 import com.aakulova.letsevent.models.CityEvent;
 import com.aakulova.letsevent.models.Event;
@@ -178,9 +179,10 @@ public class HomeActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Event> events = response.body();
                     for (int i = 0; i < events.size(); i++) {
-                        eventsListData.add(new ListData(events.get(i).getNameEvent(), events.get(i).getDescEvent(), events.get(i).getAddressEvent(), events.get(i).getCountOfPeople(), R.drawable.le));
+                        eventsListData.add(new ListData(events.get(i).getNameEvent(), events.get(i).getDescEvent(), events.get(i).getDateEvent(), events.get(i).getAddressEvent(), events.get(i).getCountOfPeople(), R.drawable.le));
                     }
-
+                    ListAdapter adapter = new ListAdapter(HomeActivity.this, eventsListData);
+                    eventsView.setAdapter(adapter);
                 } else {
                     Toast.makeText(HomeActivity.this, "Failed to load events", Toast.LENGTH_SHORT).show();
                 }

@@ -50,17 +50,19 @@ public class ListAdapter extends ArrayAdapter<ListData> {
 
         ImageView listImage = convertView.findViewById(R.id.imageView);
         TextView listName = convertView.findViewById(R.id.nameTextView);
-//        TextView listDate = convertView.findViewById(R.id.dateTextView);
+        TextView listAddress = convertView.findViewById(R.id.addressTextView);
+        TextView listDate = convertView.findViewById(R.id.event_date);
 
         listImage.setImageResource(Objects.requireNonNull(listData).image);
         listName.setText(listData.name);
-//        listDate.setText(listData.date);
+        listAddress.setText(listData.address);
+        listDate.setText(listData.date);
 
         // Установка обработчика клика на весь элемент списка
         convertView.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), EventActivity.class);
             intent.putExtra("name", listData.name);
-//            intent.putExtra("date", listData.date);
+            intent.putExtra("date", listData.date);
             intent.putExtra("desc", listData.desc);
             intent.putExtra("addr", listData.address);
             intent.putExtra("countPeople", listData.countPeople);

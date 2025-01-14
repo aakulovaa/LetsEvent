@@ -7,7 +7,7 @@ import java.util.Set;
 public class Event {
     private Integer idEvent;
     private String nameEvent;
-    private LocalDate dateEvent;
+    private String dateEvent;
     private CityEvent cityEvent;
     private String addressEvent;
     private String descEvent;
@@ -18,7 +18,7 @@ public class Event {
     private Set<User> usersAttended = new HashSet<>();
     private Set<User> usersSaved = new HashSet<>();
 
-    public Event(Integer idEvent, String nameEvent, LocalDate dateEvent, CityEvent cityEvent, String addressEvent, String descEvent, int countOfPeople, CategoryEvent categoryEvent, String imgSrcUser, User author, Set<User> usersAttended, Set<User> usersSaved) {
+    public Event(Integer idEvent, String nameEvent, String dateEvent, CityEvent cityEvent, String addressEvent, String descEvent, int countOfPeople, CategoryEvent categoryEvent, String imgSrcUser, User author, Set<User> usersAttended, Set<User> usersSaved) {
         this.idEvent = idEvent;
         this.nameEvent = nameEvent;
         this.dateEvent = dateEvent;
@@ -49,11 +49,11 @@ public class Event {
         this.nameEvent = nameEvent;
     }
 
-    public LocalDate getDateEvent() {
+    public String getDateEvent() {
         return dateEvent;
     }
 
-    public void setDateEvent(LocalDate dateEvent) {
+    public void setDateEvent(String dateEvent) {
         this.dateEvent = dateEvent;
     }
 
