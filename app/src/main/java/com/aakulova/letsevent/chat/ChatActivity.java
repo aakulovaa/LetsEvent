@@ -70,7 +70,7 @@ public class ChatActivity extends AppCompatActivity {
                     DialogAdapter adapter = new DialogAdapter(ChatActivity.this, dialogList);
                     dialogView.setAdapter(adapter);
                 } else {
-                    Toast.makeText(ChatActivity.this, "Failed to load users", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChatActivity.this, "Failed to load chats", Toast.LENGTH_SHORT).show();
                 }
             }
 
