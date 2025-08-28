@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.users_list.UserAccActivity">
+
+    <ImageView
+        android:id="@+id/user_photo"
+        android:layout_width="77dp"
+        android:layout_height="71dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/user_photo"
+        app:srcCompat="@drawable/le" />
+
+    <TextView
+        android:id="@+id/user_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/user_logo"
+        style="@style/TextColor"
+        android:textSize="30sp" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="140dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessLeaf">
+
+        <TextView
+            android:id="@+id/subscription"
+            style="@style/TextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/subscriber"
+            style="@style/TextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/count_events_attended"
+        style="@style/TextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="160dp"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/count_events_publish"
+        style="@style/TextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/count_events_attended"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="3dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/count_events_attended" />
+
+    <LinearLayout
+        android:id="@+id/action_bar"
+        android:layout_width="341dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/count_events_publish"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="38dp"
+        android:orientation="horizontal">
+
+        <Button
+            style="@style/ButtonColor"
+            android:id="@+id/subscribe"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="monospace"
+            android:text="Подписаться"
+            android:onClick="addFolover"
+            android:textSize="12sp" />
+
+        <Button
+            style="@style/ButtonColor"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="monospace"
+            android:onClick="goToDialog"
+            android:text="Написать"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        style="@style/LinearColor"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:importantForAccessibility="no"
+            android:onClick="goToNews"
+            android:src="@drawable/ico_news"
+            style="@style/ButtonForLabelColor"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:onClick="goToSaved"
+            android:src="@drawable/ico_saved"
+            style="@style/ButtonForLabelColor" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="21dp"
+            android:importantForAccessibility="no"
+            android:onClick="goToHome"
+            android:src="@drawable/ico_home_black"
+            style="@style/ButtonForLabelColor" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:onClick="goToChat"
+            android:src="@drawable/ico_chat"
+            style="@style/ButtonForLabelColor"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/profileBtn"
+            style="@style/ButtonForLabelColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ico_user"
+            android:onClick="goToProfile"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

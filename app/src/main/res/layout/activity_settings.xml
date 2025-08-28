@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    style="@style/ScreenBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.SettingsActivity">
+
+    <RelativeLayout
+        android:id="@+id/upper_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/LinearColor"
+        tools:ignore="UselessParent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            style="@style/ButtonForLabelColor"
+            android:fontFamily="monospace"
+            android:onClick="goToBack"
+            android:text="@string/back_btn"
+            android:textSize="16sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="147dp"
+            style="@style/TextColor"
+            android:fontFamily="monospace"
+            android:text="@string/settings_label"
+            android:textSize="18sp"
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+    android:id="@+id/change_theme"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="50dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextColor"
+        android:text="@string/change_theme"
+        />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/change_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp">
+        <TextView
+            android:id="@+id/accountTypeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextColor"
+            android:text="@string/change_akk"
+            />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchToBusinessButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="133dp"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_profile"
+        android:theme="@style/ButtonWithoutBack"
+        style="@style/TextColor"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="150dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/editProfileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:theme="@style/ButtonWithoutBack"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="200dp">
+
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_name"
+            />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email" />
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#ccc"
+            android:scaleType="centerCrop"
+            android:padding="6dp" />
+
+        <Button
+            android:id="@+id/saveChangesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/ButtonColor"
+            android:text="@string/save" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/changePasswordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_yser_pass"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="450dp"
+        style="@style/TextColor"
+        android:theme="@style/ButtonWithoutBack"/>
+
+    <LinearLayout
+        android:id="@+id/changePasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="500dp"
+        >
+
+        <EditText
+            android:id="@+id/currentPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/current_user_pass"
+            />
+
+        <EditText
+            android:id="@+id/newPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/new_user_pass" />
+
+        <EditText
+            android:id="@+id/confirmPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_new_user_pass" />
+
+        <Button
+            android:id="@+id/saveNewPasswordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/ButtonColor"
+            android:text="@string/change_pass"
+            />
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        style="@style/LinearColor"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:importantForAccessibility="no"
+            android:onClick="goToNews"
+            android:src="@drawable/ico_news"
+            style="@style/ButtonForLabelColor"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:onClick="goToSaved"
+            android:src="@drawable/ico_saved"
+            style="@style/ButtonForLabelColor" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="21dp"
+            android:importantForAccessibility="no"
+            android:onClick="goToHome"
+            android:src="@drawable/ico_home_black"
+            style="@style/ButtonForLabelColor" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:onClick="goToChat"
+            android:src="@drawable/ico_chat"
+            style="@style/ButtonForLabelColor"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:src="@drawable/ico_user"
+            style="@style/ButtonForLabelColor"
+            android:onClick="goToProfile"
+            android:importantForAccessibility="no"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+    </LinearLayout>
+
+</RelativeLayout>

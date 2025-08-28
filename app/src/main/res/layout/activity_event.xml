@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".event.EventActivity">
+
+  <RelativeLayout
+      android:id="@+id/upper_bg"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      style="@style/LinearColor"
+      tools:ignore="UselessParent"
+      >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="monospace"
+        android:onClick="goToBack"
+        android:text="@string/back_btn"
+        style="@style/ButtonForLabelColor"
+        android:textSize="16sp"
+        tools:ignore="TouchTargetSizeCheck" />
+
+  </RelativeLayout>
+
+  <ImageView
+      android:id="@+id/eventImage"
+      android:layout_width="352dp"
+      android:layout_height="194dp"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentEnd="true"
+      android:layout_marginTop="65dp"
+      android:layout_marginEnd="31dp"
+      tools:srcCompat="@tools:sample/backgrounds/scenic"
+      tools:ignore="ContentDescription" />
+
+  <TextView
+      android:id="@+id/eventName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/eventImage"
+      android:layout_alignParentStart="true"
+      android:layout_marginStart="33dp"
+      android:layout_marginTop="32dp"
+      android:text="@string/eventName"
+      android:textSize="24sp" />
+
+  <ImageButton
+      android:id="@+id/btnFoeSaving"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/eventImage"
+      android:layout_alignParentEnd="true"
+      android:layout_marginTop="22dp"
+      android:layout_marginEnd="30dp"
+      style="@style/ButtonWithoutBack"
+      app:srcCompat="@drawable/ico_saved"
+      tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+  <Button
+      android:id="@+id/btnGoToTheEvent"
+      style="@style/ButtonColor"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/btnFoeSaving"
+      android:layout_alignParentEnd="true"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="28dp"
+      android:text="@string/goToEvent" />
+
+
+
+  <TextView
+      android:id="@+id/addressEvent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/countPeople"
+      android:layout_alignParentStart="true"
+      android:layout_marginStart="33dp"
+      android:layout_marginTop="7dp"
+      android:text="@string/eventAddress"
+      android:textSize="16sp"
+      tools:ignore="HardcodedText" />
+
+  <TextView
+      android:id="@+id/descriptionEvent"
+      android:layout_width="349dp"
+      android:layout_height="40dp"
+      android:layout_below="@+id/addressEvent"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentEnd="true"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="7dp"
+      android:layout_marginEnd="30dp"
+      android:text="@string/eventDescription"
+      android:textSize="14sp"
+      tools:ignore="HardcodedText" />
+  <TextView
+      android:id="@+id/dateEvent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/descriptionEvent"
+      android:layout_alignParentStart="true"
+      android:layout_marginStart="33dp"
+      android:layout_marginTop="7dp"
+      android:text="@string/eventDate"
+      android:textSize="16sp"
+      tools:ignore="HardcodedText" />
+  <TextView
+      android:id="@+id/countPeople"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/eventName"
+      android:layout_alignParentStart="true"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="16dp"
+      android:textColor="@color/grey"
+      tools:ignore="TextContrastCheck" />
+
+  <Button
+      android:id="@+id/editEvent"
+      style="@style/ButtonForLabelColor"
+      android:layout_width="343dp"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/descriptionEvent"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentEnd="true"
+      android:layout_marginStart="37dp"
+      android:layout_marginTop="31dp"
+      android:layout_marginEnd="32dp"
+      android:radius="10dp"
+      android:visibility="gone"
+      android:text="@string/editEvent"
+      android:textSize="18sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/descriptionEvent"
+      tools:ignore="VisualLintButtonSize" />
+
+  <LinearLayout
+      android:id="@+id/linearLayout2"
+      style="@style/LinearColor"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_alignParentBottom="true"
+      android:orientation="horizontal">
+
+    <ImageButton
+        style="@style/ButtonForLabelColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:importantForAccessibility="no"
+        android:onClick="goToNews"
+        android:src="@drawable/ico_news"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageButton
+        style="@style/ButtonForLabelColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:onClick="goToSaved"
+        android:src="@drawable/ico_saved" />
+
+    <ImageButton
+        style="@style/ButtonForLabelColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginTop="5dp"
+        android:importantForAccessibility="no"
+        android:onClick="goToHome"
+        android:src="@drawable/ico_home_black"
+        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+    <ImageButton
+        style="@style/ButtonForLabelColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:onClick="goToChat"
+        android:src="@drawable/ico_chat"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageButton
+        style="@style/ButtonForLabelColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:importantForAccessibility="no"
+        android:onClick="goToProfile"
+        android:src="@drawable/ico_user"
+        tools:ignore="TouchTargetSizeCheck" />
+
+  </LinearLayout>
+
+</RelativeLayout>

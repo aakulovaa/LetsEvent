@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/ScreenBackground"
+    android:onClick="goToSettings"
+    tools:context=".user.ProfileActivity">
+
+    <ImageView
+        android:id="@+id/user_photo"
+        android:layout_width="77dp"
+        android:layout_height="71dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/user_photo"
+        app:srcCompat="@drawable/le" />
+
+    <TextView
+        android:id="@+id/user_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/user_logo"
+        style="@style/TextColor"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="75dp"
+        android:text="@string/user_mail"
+        style="@style/TextColor"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/accountTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="115dp"
+        android:text="@string/user_profile"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        tools:ignore="TextContrastCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="140dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessLeaf">
+
+        <TextView
+            android:id="@+id/subscription"
+            style="@style/TextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/subscriber"
+            style="@style/TextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/count_events_attended"
+        style="@style/TextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="160dp"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/count_events_publish"
+        style="@style/TextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/count_events_attended"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="3dp"
+        android:visibility="gone"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/count_events_attended" />
+
+    <Button
+        android:id="@+id/attendedEventsListView"
+        style="@style/ButtonColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/count_events_publish"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="38dp"
+        android:onClick="goToAttended"
+        android:radius="10dp"
+        android:text="@string/events_attended"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/count_events_publish"
+        tools:ignore="VisualLintButtonSize" />
+
+    <Button
+        android:id="@+id/publishedEventBtn"
+        style="@style/ButtonColor"
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/attendedEventsListView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="39dp"
+        android:radius="10dp"
+        android:visibility="gone"
+        android:text="@string/publishedEventBtn"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/attendedEventsListView"
+        tools:ignore="VisualLintButtonSize" />
+
+    <Button
+        android:id="@+id/publishEventBtn"
+        style="@style/ButtonForLabelColor"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/publishedEventBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="32dp"
+        android:radius="10dp"
+        android:visibility="gone"
+        android:text="@string/publishEventBtn"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/publishedEventBtn"
+        tools:ignore="VisualLintButtonSize" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/exit"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="1dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:onClick="goToSettings"
+        android:padding="0dp"
+        android:text="@string/settings"
+        style="@style/ButtonWithoutBack"
+        android:textSize="12sp"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/exit"
+        style="@style/ButtonWithoutBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="9dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="0dp"
+        android:text="@string/exit"
+        android:textColor="@color/red"
+        android:textSize="12sp"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        style="@style/LinearColor"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:importantForAccessibility="no"
+            android:onClick="goToNews"
+            android:src="@drawable/ico_news"
+            style="@style/ButtonForLabelColor"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:onClick="goToSaved"
+            android:src="@drawable/ico_saved"
+            style="@style/ButtonForLabelColor" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="21dp"
+            android:importantForAccessibility="no"
+            android:onClick="goToHome"
+            android:src="@drawable/ico_home_black"
+            style="@style/ButtonForLabelColor" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:onClick="goToChat"
+            android:src="@drawable/ico_chat"
+            style="@style/ButtonForLabelColor"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ico_user"
+            style="@style/ButtonSelectedForLabelColor"
+            android:importantForAccessibility="no"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

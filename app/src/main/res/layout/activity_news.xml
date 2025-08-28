@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/ScreenBackground"
+    tools:context=".news.NewsActivity">
+
+    <RelativeLayout
+        android:id="@+id/upper_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/LinearColor"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="160dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="176dp"
+            android:fontFamily="monospace"
+            android:text="@string/news_label"
+            style="@style/TextColor"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/addNews"
+        style="@style/LinearColor"
+        android:layout_width="wrap_content"
+        android:layout_height="113dp"
+        android:layout_below="@+id/upper_bg"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginVertical="60dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="20dp"
+        android:layout_marginEnd="57dp"
+        android:background="@drawable/rounded_edit_text"
+        tools:ignore="RtlSymmetry,UselessParent">
+
+        <EditText
+            android:id="@+id/editNews"
+            android:layout_width="262dp"
+            android:layout_height="58dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="160dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="14dp"
+            android:background="@null"
+            android:fontFamily="monospace"
+            android:paddingStart="20dp"
+            android:inputType="textLongMessage"
+            android:hint="@string/addNews"
+            android:textColor="@color/grey"
+            android:textSize="12sp"
+            tools:ignore="RtlSymmetry" />
+
+        <ImageButton
+            android:id="@+id/ico_image"
+            style="@style/ButtonForLabelColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="7dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/add_photo"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/ico_send_btn"
+            style="@style/ButtonForLabelColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="7dp"
+            android:fontFamily="monospace"
+            android:importantForAccessibility="no"
+            android:src="@drawable/send"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/newsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/addNews"
+        android:layout_margin="10dp"
+        android:layout_above="@+id/folderNav"/>
+
+    <LinearLayout
+        android:id="@+id/folderNav"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        style="@style/LinearColor"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            style="@style/ButtonSelectedForLabelColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ico_news"
+            android:importantForAccessibility="no"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goToSaved"
+            android:src="@drawable/ico_saved"
+            style="@style/ButtonForLabelColor"
+            android:importantForAccessibility="no"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="21dp"
+            android:importantForAccessibility="no"
+            android:onClick="goToHome"
+            android:src="@drawable/ico_home_black"
+            style="@style/ButtonForLabelColor" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:onClick="goToChat"
+            android:src="@drawable/ico_chat"
+            style="@style/ButtonForLabelColor"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:importantForAccessibility="no"
+            android:onClick="goToProfile"
+            android:src="@drawable/ico_user"
+            style="@style/ButtonForLabelColor"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+</RelativeLayout>
